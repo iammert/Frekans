@@ -1,6 +1,5 @@
 package iammert.com.frekans
 
-import android.content.Context
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
 
