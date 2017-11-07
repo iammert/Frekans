@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+def libraries = rootProject.ext.libraries
+def configuration = rootProject.ext.configuration
+
+android {
+    compileSdkVersion configuration.compileSdkVersion
+    defaultConfig {
+        applicationId configuration.package
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode configuration.versionCode
+        versionName configuration.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    androidTestImplementation "com.android.support.test:runner:${libraries.supportTestRunner}"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:${libraries.espressoCore}"
+
+    testImplementation "junit:junit:${libraries.junit}"
+    testImplementation "android.arch.core:core-testing:${libraries.arch}"
+    testImplementation "android.arch.persistence.room:testing:${libraries.arch}"
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:${libraries.support}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${libraries.kotlin}"
+    implementation "com.squareup.retrofit2:retrofit:${libraries.retrofit}"
+    implementation "com.squareup.okhttp3:okhttp:${libraries.okhttp}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${libraries.okhttp}"
+    implementation "com.google.dagger:dagger:${libraries.dagger}"
+    implementation "com.google.dagger:dagger-android:${libraries.dagger}"
+    implementation "com.google.dagger:dagger-android-support:${libraries.dagger}"
+    implementation "io.reactivex.rxjava2:rxjava:${libraries.rxjava}"
+    implementation "android.arch.lifecycle:runtime:${libraries.archRuntime}"
+    implementation "android.arch.lifecycle:extensions:${libraries.arch}"
+    implementation "android.arch.lifecycle:reactivestreams:${libraries.arch}"
+    implementation "android.arch.persistence.room:runtime:${libraries.arch}"
+    implementation "android.arch.persistence.room:rxjava2:${libraries.arch}"
+    implementation "com.squareup.picasso:picasso:${libraries.picasso}"
+
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.13'
+    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
+}
+repositories {
+    mavenCentral()
+}

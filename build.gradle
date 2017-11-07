@@ -1,0 +1,53 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.51"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+
+    configuration = [
+            package          : "iammert.com.frekans",
+            compileSdkVersion: 27,
+            targetSdkVersion : 27,
+            minSdkVersion    : 15,
+            devMinSdkVersion : 23,
+            versionCode      : 1,
+            versionName      : "1.0.0"
+    ]
+
+    libraries = [
+            kotlin           : "1.1.51",
+            support          : "27.0.0",
+            arch             : "1.0.0",
+            archRuntime      : "1.0.3",
+            dagger           : "2.13",
+            rxjava           : "2.1.6",
+            okhttp           : "3.9.0",
+            retrofit         : "2.3.0",
+            picasso          : "2.5.2",
+            supportTestRunner: "1.0.1",
+            espressoCore     : "3.0.1",
+            junit            : "4.12"
+    ]
+
+}
