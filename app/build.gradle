@@ -49,6 +49,7 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:${libraries.arch}"
     implementation "android.arch.persistence.room:rxjava2:${libraries.arch}"
     implementation "com.squareup.picasso:picasso:${libraries.picasso}"
+    implementation "com.roughike:bottom-bar:${libraries.bottombar}"
 
     kapt 'com.google.dagger:dagger-compiler:2.13'
     kapt 'com.google.dagger:dagger-android-processor:2.13'

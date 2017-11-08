@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@drawable/ic_home_grey_600_24dp"
+        id="@+id/tab_home" />
+    <tab
+        icon="@drawable/ic_whatshot_grey_600_24dp"
+        id="@+id/tab_trending" />
+    <tab
+        icon="@drawable/ic_search_grey_600_24dp"
+        id="@+id/tab_search" />
+    <tab
+        icon="@drawable/ic_favorite_grey_600_24dp"
+        id="@+id/tab_favourite" />
+    <tab
+        icon="@drawable/ic_settings_grey_600_24dp"
+        id="@+id/tab_settings" />
+</tabs>

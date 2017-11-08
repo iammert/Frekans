@@ -45,6 +45,7 @@ ext {
             okhttp           : "3.9.0",
             retrofit         : "2.3.0",
             picasso          : "2.5.2",
+            bottombar        : "2.3.1",
             supportTestRunner: "1.0.1",
             espressoCore     : "3.0.1",
             junit            : "4.12"

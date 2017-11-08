@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <com.roughike.bottombar.BottomBar
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        app:bb_activeTabColor="@color/colorWhite"
+        android:background="@color/colorPrimary"
+        app:bb_behavior="iconsOnly"
+        app:bb_tabXmlResource="@xml/bottombar" />
 
 </android.support.design.widget.CoordinatorLayout>
