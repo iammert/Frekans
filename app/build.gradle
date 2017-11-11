@@ -23,7 +23,7 @@ android {
     }
 
     dataBinding{
-        enabled true
+        enabled = true
     }
 }
 
@@ -59,6 +59,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-android-processor:2.13'
     kapt "android.arch.persistence.room:compiler:1.0.0"
     kapt "android.arch.lifecycle:compiler:1.0.0"
+    kapt 'com.android.databinding:compiler:3.0.0'
 }
 repositories {
     mavenCentral()

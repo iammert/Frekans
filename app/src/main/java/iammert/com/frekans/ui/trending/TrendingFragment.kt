@@ -1,6 +1,5 @@
 package iammert.com.frekans.ui.trending
 
-import dagger.android.DaggerFragment
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.FragmentTrendingBinding
 import iammert.com.frekans.ui.BaseFragment

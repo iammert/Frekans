@@ -1,6 +1,5 @@
 package iammert.com.frekans.ui.home
 
-import dagger.android.DaggerFragment
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.FragmentHomeBinding
 import iammert.com.frekans.ui.BaseFragment

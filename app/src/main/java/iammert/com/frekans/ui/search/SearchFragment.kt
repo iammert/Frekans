@@ -1,6 +1,5 @@
 package iammert.com.frekans.ui.search
 
-import dagger.android.DaggerFragment
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.FragmentSearchBinding
 import iammert.com.frekans.ui.BaseFragment
