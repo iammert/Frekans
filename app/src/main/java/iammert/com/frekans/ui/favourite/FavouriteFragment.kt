@@ -1,8 +1,18 @@
 package iammert.com.frekans.ui.favourite
-
-import dagger.android.DaggerFragment
+import iammert.com.frekans.R
+import iammert.com.frekans.databinding.FragmentFavouriteBinding
+import iammert.com.frekans.ui.BaseFragment
 
 /**
  * Created by mertsimsek on 08/11/2017.
  */
-class FavouriteFragment: DaggerFragment()
+class FavouriteFragment : BaseFragment<FavouriteViewModel, FragmentFavouriteBinding>() {
+
+    override fun getViewModel(): Class<FavouriteViewModel> {
+        return FavouriteViewModel::class.java
+    }
+
+    override fun getLayoutRes(): Int {
+        return R.layout.fragment_favourite
+    }
+}
