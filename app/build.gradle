@@ -7,6 +7,22 @@ def configuration = rootProject.ext.configuration
 
 android {
     compileSdkVersion configuration.compileSdkVersion
+
+    flavorDimensions "build"
+    productFlavors {
+        dev {
+            dimension "build"
+            applicationIdSuffix ".dev"
+            buildConfigField "String", "API_URL", '"http://demo3711327.mockable.io/"'
+            minSdkVersion configuration.devMinSdkVersion
+        }
+        prod {
+            dimension "build"
+            buildConfigField "String", "API_URL", '""'
+            minSdkVersion configuration.minSdkVersion
+        }
+    }
+
     defaultConfig {
         applicationId configuration.package
         minSdkVersion configuration.minSdkVersion
@@ -22,8 +38,8 @@ android {
         }
     }
 
-    dataBinding{
-        enabled = true
+    dataBinding {
+        enabled true
     }
 }
 
