@@ -9,6 +9,7 @@ import iammert.com.frekans.di.key.ViewModelKey
 import iammert.com.frekans.di.ViewModelFactory
 import iammert.com.frekans.ui.favourite.FavouriteViewModel
 import iammert.com.frekans.ui.home.HomeViewModel
+import iammert.com.frekans.ui.main.MainViewModel
 import iammert.com.frekans.ui.search.SearchViewModel
 import iammert.com.frekans.ui.settings.SettingsViewModel
 import iammert.com.frekans.ui.trending.TrendingViewModel
@@ -43,6 +44,11 @@ internal abstract class ViewModelModule {
     @Binds
     @ViewModelKey(SettingsViewModel::class)
     abstract fun provideSettingsViewModel(settingsViewModel: SettingsViewModel): ViewModel
+
+    @IntoMap
+    @Binds
+    @ViewModelKey(MainViewModel::class)
+    abstract fun provideMainViewModel(mainViewModel: MainViewModel): ViewModel
 
     @Binds
     abstract fun provideViewModelFactory(viewModelFactory: ViewModelFactory): ViewModelProvider.Factory

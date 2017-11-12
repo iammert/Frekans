@@ -9,16 +9,17 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
+import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 
 /**
  * Created by mertsimsek on 06/11/2017.
  */
-abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding> : DaggerAppCompatActivity() {
 
     @Inject
-    private lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     protected lateinit var binding: DB
 
@@ -29,8 +30,8 @@ abstract class BaseActivity<VM : ViewModel, DB : ViewDataBinding> : AppCompatAct
 
     abstract fun getViewModel(): Class<VM>
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, getLayoutRes())
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModel())
     }

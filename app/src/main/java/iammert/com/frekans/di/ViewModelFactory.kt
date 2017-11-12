@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by mertsimsek on 12/11/2017.
  */
 @Singleton
-class ViewModelFactory @Inject constructor(private val viewModelMap: Map<Class<out ViewModel>, Provider<ViewModel>>)
+class ViewModelFactory @Inject constructor(private val viewModelMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>)
     : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")

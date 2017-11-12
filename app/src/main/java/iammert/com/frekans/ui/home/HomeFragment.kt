@@ -13,6 +13,10 @@ import iammert.com.frekans.ui.BaseFragment
  */
 class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
+    companion object {
+        fun newInstance() = HomeFragment()
+    }
+
     override fun getViewModel(): Class<HomeViewModel> {
         return HomeViewModel::class.java
     }
