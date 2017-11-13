@@ -9,8 +9,6 @@ import iammert.com.frekans.di.component.DaggerAppComponent
  */
 class FrekansApplication : DaggerApplication() {
 
-    override fun applicationInjector(): AndroidInjector<out FrekansApplication> {
-        return DaggerAppComponent.builder().create(this)
-    }
+    override fun applicationInjector(): AndroidInjector<out FrekansApplication> = DaggerAppComponent.builder().create(this)
 
 }

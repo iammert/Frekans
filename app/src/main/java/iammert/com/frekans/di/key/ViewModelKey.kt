@@ -2,6 +2,7 @@ package iammert.com.frekans.di.key
 
 import android.arch.lifecycle.ViewModel
 import dagger.MapKey
+import iammert.com.frekans.ui.favourite.FavouriteViewModel
 import kotlin.reflect.KClass
 
 /**
