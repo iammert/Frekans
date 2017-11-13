@@ -3,6 +3,8 @@ package iammert.com.frekans.data
 import iammert.com.frekans.data.remote.FrekansService
 import iammert.com.frekans.data.remote.model.Genre
 import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,6 +14,8 @@ import javax.inject.Singleton
 @Singleton
 class RadioRepository @Inject constructor(private val service: FrekansService) {
 
-    fun getGenres(): Flowable<List<Genre>> = service.getGenres().toFlowable()
-
+    fun getGenres(): Flowable<List<Genre>> = service.getGenres()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .toFlowable()
 }

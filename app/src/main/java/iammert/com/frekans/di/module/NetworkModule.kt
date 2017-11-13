@@ -5,7 +5,10 @@ import dagger.Provides
 import iammert.com.frekans.BuildConfig
 import iammert.com.frekans.data.remote.FrekansService
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /**
@@ -16,11 +19,29 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient() = OkHttpClient.Builder().build()
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor = HttpLoggingInterceptor()
+            .setLevel(HttpLoggingInterceptor.Level.BODY)
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient) = Retrofit.Builder().baseUrl(BuildConfig.API_URL).build()
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        val okhttpBuilder = OkHttpClient.Builder()
+        if (BuildConfig.DEBUG) {
+            okhttpBuilder.addInterceptor(loggingInterceptor)
+        }
+        return okhttpBuilder.build()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+            Retrofit.Builder()
+                    .client(okHttpClient)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(BuildConfig.API_URL)
+                    .build()
 
     @Provides
     @Singleton

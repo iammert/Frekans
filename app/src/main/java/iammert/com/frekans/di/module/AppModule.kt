@@ -1,5 +1,6 @@
 package iammert.com.frekans.di.module
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import iammert.com.frekans.FrekansApplication
@@ -13,5 +14,5 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideContext(frekansApplication: FrekansApplication) = frekansApplication.applicationContext
+    fun provideContext(frekansApplication: FrekansApplication): Context = frekansApplication.applicationContext
 }

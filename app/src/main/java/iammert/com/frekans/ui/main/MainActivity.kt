@@ -25,7 +25,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         binding.bottomBar.setOnTabSelectListener(
                 { tabId ->
                     when (tabId) {
-                        R.id.tab_home -> HomeFragment.newInstance()
+                        R.id.tab_home -> supportFragmentManager.beginTransaction()
+                                .add(R.id.container, HomeFragment.newInstance())
+                                .commit()
                     }
                 }, true)
 
