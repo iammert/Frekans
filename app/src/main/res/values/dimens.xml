@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- margins -->
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+
+    <!-- heights-->
+    <dimen name="height_page_label">56dp</dimen>
+
+    <!-- text sizes -->
+    <dimen name="size_text_small">12sp</dimen>
+    <dimen name="size_text_regular">16sp</dimen>
+    <dimen name="size_text_medium">20sp</dimen>
+    <dimen name="size_text_large">24sp</dimen>
+    <dimen name="size_text_xlarge">28sp</dimen>
+
+</resources>

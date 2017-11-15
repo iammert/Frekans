@@ -16,4 +16,8 @@ class TrendingFragment : BaseFragment<TrendingViewModel, FragmentTrendingBinding
     override fun getLayoutRes(): Int {
         return R.layout.fragment_trending
     }
+
+    companion object {
+        fun newInstance() = TrendingFragment()
+    }
 }

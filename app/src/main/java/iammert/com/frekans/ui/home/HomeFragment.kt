@@ -23,7 +23,16 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel.getGenres().observe(this, Observer { Log.v("test", "Size: " + it?.size) })
+        binding.title = getString(R.string.title_homepage)
+
+        val genreAdapter = GenresAdapter()
+        binding.recyclerView.adapter = genreAdapter
+
+        viewModel.getGenres().observe(this, Observer {
+            if (it != null) {
+                genreAdapter.setGenres(it)
+            }
+        })
     }
 
     companion object {

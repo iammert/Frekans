@@ -26,7 +26,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                 { tabId ->
                     when (tabId) {
                         R.id.tab_home -> supportFragmentManager.beginTransaction()
-                                .add(R.id.container, HomeFragment.newInstance())
+                                .replace(R.id.container, HomeFragment.newInstance())
                                 .commit()
                     }
                 }, true)

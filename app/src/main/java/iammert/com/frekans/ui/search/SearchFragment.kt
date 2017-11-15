@@ -16,4 +16,8 @@ class SearchFragment : BaseFragment<SearchViewModel, FragmentSearchBinding>() {
     override fun getLayoutRes(): Int {
         return R.layout.fragment_search
     }
+
+    companion object {
+        fun newInstance() = SearchFragment()
+    }
 }
