@@ -16,4 +16,6 @@
     <dimen name="size_text_large">24sp</dimen>
     <dimen name="size_text_xlarge">28sp</dimen>
 
+    <dimen name="size_square_card">150dp</dimen>
+
 </resources>

@@ -8,4 +8,7 @@
     <string name="title_favourite">Favourite</string>
     <string name="title_settings">Settings</string>
 
+    <!-- Home page texts -->
+    <string name="title_homepage_genres_for_you">Genres for you</string>
+
 </resources>

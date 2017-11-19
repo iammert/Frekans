@@ -10,6 +10,11 @@
     <style name="BaseTextAppearance"  parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textSize">@dimen/size_text_regular</item>
+        <item name="android:fontFamily">@font/font_product_sans</item>
+    </style>
+
+    <style name="BaseTextAppearance.Medium">
+        <item name="android:textSize">@dimen/size_text_medium</item>
     </style>
 
 </resources>

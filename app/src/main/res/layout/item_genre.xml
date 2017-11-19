@@ -18,13 +18,14 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="@dimen/size_square_card"
+            android:layout_height="@dimen/size_square_card"
             app:imageUrl="@{genre.imageUrl}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16dp"
             android:text="@{genre.genreName}"
             android:textAppearance="@style/BaseTextAppearance" />
 
