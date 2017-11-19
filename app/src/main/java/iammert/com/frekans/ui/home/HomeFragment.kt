@@ -29,9 +29,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         binding.recyclerView.adapter = genreAdapter
 
         viewModel.getGenres().observe(this, Observer {
-            if (it != null) {
-                genreAdapter.setGenres(it)
-            }
+            it?.let { genreAdapter.setGenres(it) }
         })
     }
 
