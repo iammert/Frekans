@@ -14,5 +14,4 @@ class HomeViewModel @Inject constructor(radioRepository: RadioRepository) : View
     private val genresLiveData = LiveDataReactiveStreams.fromPublisher(radioRepository.getGenres())
 
     fun getGenres(): LiveData<List<Genre>> = genresLiveData
-
 }
