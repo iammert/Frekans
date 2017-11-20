@@ -6,6 +6,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import iammert.com.frekans.FrekansApplication
 import iammert.com.frekans.di.module.ActivityBuilderModule
 import iammert.com.frekans.di.module.AppModule
+import iammert.com.frekans.di.module.DatabaseModule
 import iammert.com.frekans.di.module.NetworkModule
 import javax.inject.Singleton
 
@@ -17,6 +18,7 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AppModule::class,
         NetworkModule::class,
+        DatabaseModule::class,
         ActivityBuilderModule::class))
 interface AppComponent : AndroidInjector<FrekansApplication> {
     @Component.Builder

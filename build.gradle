@@ -37,7 +37,7 @@ ext {
 
     libraries = [
             kotlin           : "1.1.51",
-            support          : "27.0.0",
+            support          : "27.0.1",
             arch             : "1.0.0",
             archRuntime      : "1.0.3",
             dagger           : "2.13",
@@ -47,6 +47,7 @@ ext {
             retrofit         : "2.3.0",
             picasso          : "2.5.2",
             bottombar        : "2.3.1",
+            stetho           : "1.5.0",
             supportTestRunner: "1.0.1",
             espressoCore     : "3.0.1",
             junit            : "4.12"
