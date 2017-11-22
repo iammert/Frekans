@@ -10,5 +10,6 @@ import android.arch.persistence.room.PrimaryKey
 @Entity(tableName = "genres")
 data class GenreEntity(
         @PrimaryKey @ColumnInfo(name = "genreId") val genreId: Long,
-        @ColumnInfo(name = "genreName") val genreName: String
+        @ColumnInfo(name = "genre_name") val genreName: String,
+        @ColumnInfo(name = "genre_image_url") val imageUrl: String
 )

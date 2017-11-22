@@ -3,15 +3,16 @@ package iammert.com.frekans.ui.home
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import iammert.com.frekans.data.local.entity.GenreEntity
 import iammert.com.frekans.data.remote.model.Genre
 import iammert.com.frekans.databinding.ItemGenreBinding
 
 /**
  * Created by mertsimsek on 15/11/2017.
  */
-class GenresAdapter(private var genres: List<Genre> = ArrayList()) : RecyclerView.Adapter<GenresAdapter.GenreItemViewHolder>() {
+class GenresAdapter(private var genres: List<GenreEntity> = ArrayList()) : RecyclerView.Adapter<GenresAdapter.GenreItemViewHolder>() {
 
-    fun setGenres(genres: List<Genre>){
+    fun setGenres(genres: List<GenreEntity>){
         this.genres = genres
         notifyDataSetChanged()
     }
@@ -23,7 +24,7 @@ class GenresAdapter(private var genres: List<Genre> = ArrayList()) : RecyclerVie
     override fun getItemCount() = genres.size
 
     class GenreItemViewHolder(private var binding: ItemGenreBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(genre: Genre) = with(binding) {
+        fun bind(genre: GenreEntity) = with(binding) {
             binding.genre = genre
         }
 

@@ -6,7 +6,7 @@
 
         <variable
             name="genre"
-            type="iammert.com.frekans.data.remote.model.Genre" />
+            type="iammert.com.frekans.data.local.entity.GenreEntity" />
     </data>
 
     <LinearLayout

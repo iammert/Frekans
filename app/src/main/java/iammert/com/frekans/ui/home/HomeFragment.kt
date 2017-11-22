@@ -2,10 +2,10 @@ package iammert.com.frekans.ui.home
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.util.Log
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.FragmentHomeBinding
 import iammert.com.frekans.ui.BaseFragment
+import iammert.com.frekans.util.extension.reObserve
 
 
 /**
@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         val genreAdapter = GenresAdapter()
         binding.recyclerView.adapter = genreAdapter
 
-        viewModel.getGenres().observe(this, Observer {
+        viewModel.getGenres().reObserve(this, Observer {
             it?.let { genreAdapter.setGenres(it) }
         })
     }

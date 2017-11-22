@@ -1,10 +1,11 @@
 package iammert.com.frekans.data
 
 import iammert.com.frekans.data.local.dao.GenreDao
+import iammert.com.frekans.data.local.entity.GenreEntity
 import iammert.com.frekans.data.remote.FrekansService
-import iammert.com.frekans.data.remote.model.Genre
+import iammert.com.frekans.util.extension.doIOapplyDatabase
+import iammert.com.frekans.util.extension.doIOapplyMain
 import io.reactivex.Flowable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -16,8 +17,21 @@ import javax.inject.Singleton
 class RadioRepository @Inject constructor(private val service: FrekansService,
                                           private val genreDao: GenreDao) {
 
-    fun getGenres(): Flowable<List<Genre>> = service.getGenres()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .toFlowable()
+
+    //TO-DO don't use it like that. I just made it work persistence.
+    //TO-DO abstraction will be applied this case and other offline persistence cases.
+
+    fun getGenres(): Flowable<List<GenreEntity>> =
+            genreDao.getGenres()
+                    .doOnSubscribe {
+                        service.getGenres()
+                                .toFlowable()
+                                .flatMapIterable { it }
+                                .map { GenreEntity(it.genreId, it.genreName, it.imageUrl) }
+                                .toList()
+                                .doOnSuccess(genreDao::insertGenres)
+                                .doIOapplyDatabase()
+                                .subscribe()
+                    }
+                    .subscribeOn(Schedulers.single())
 }
