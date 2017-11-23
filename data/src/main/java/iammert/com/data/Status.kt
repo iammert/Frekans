@@ -1,4 +1,4 @@
-package iammert.com.frekans.data
+package iammert.com.data
 
 /**
  * Created by mertsimsek on 20/11/2017.

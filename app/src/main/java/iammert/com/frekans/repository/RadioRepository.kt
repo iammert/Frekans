@@ -1,10 +1,9 @@
-package iammert.com.frekans.data
+package iammert.com.frekans.repository
 
 import iammert.com.frekans.data.local.dao.GenreDao
 import iammert.com.frekans.data.local.entity.GenreEntity
 import iammert.com.frekans.data.remote.FrekansService
-import iammert.com.frekans.util.extension.doIOapplyDatabase
-import iammert.com.frekans.util.extension.doIOapplyMain
+import iammert.com.base.extensions.doIOapplyDatabase
 import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject

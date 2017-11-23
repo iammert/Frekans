@@ -1,6 +1,7 @@
-package iammert.com.frekans.util.extension
+package iammert.com.base.extensions
 
-import iammert.com.frekans.BuildConfig
+import iammert.com.base.BuildConfig
+
 
 /**
  * Created by mertsimsek on 20/11/2017.

@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+def libraries = rootProject.ext.libraries
+def configuration = rootProject.ext.configuration
+
+android {
+    compileSdkVersion configuration.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion configuration.minSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "build"
+    productFlavors {
+        dev {
+            dimension "build"
+            buildConfigField "String", "API_URL", '"http://demo3711327.mockable.io/"'
+        }
+        prod {
+            dimension "build"
+            buildConfigField "String", "API_URL", '""'
+        }
+    }
+}
+
+dependencies {
+    api project(":base")
+
+    testImplementation "android.arch.persistence.room:testing:${libraries.arch}"
+
+    implementation "android.arch.persistence.room:runtime:${libraries.arch}"
+    implementation "android.arch.persistence.room:rxjava2:${libraries.arch}"
+
+    api "com.squareup.retrofit2:retrofit:${libraries.retrofit}"
+    api "com.squareup.retrofit2:converter-gson:${libraries.retrofit}"
+    api "com.squareup.retrofit2:adapter-rxjava2:${libraries.retrofit}"
+    api "com.squareup.okhttp3:okhttp:${libraries.okhttp}"
+    api "com.squareup.okhttp3:logging-interceptor:${libraries.okhttp}"
+
+    kapt "android.arch.persistence.room:compiler:1.0.0"
+    kapt "com.google.dagger:dagger-compiler:2.13"
+}

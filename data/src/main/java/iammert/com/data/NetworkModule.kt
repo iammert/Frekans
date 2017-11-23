@@ -1,10 +1,9 @@
-package iammert.com.frekans.di.module
+package iammert.com.data
 
 import dagger.Module
 import dagger.Provides
-import iammert.com.frekans.BuildConfig
+import iammert.com.base.extensions.debug
 import iammert.com.frekans.data.remote.FrekansService
-import iammert.com.frekans.util.extension.debug
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

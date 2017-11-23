@@ -2,7 +2,7 @@ package iammert.com.frekans.util.tool
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import iammert.com.frekans.util.extension.debug
+import iammert.com.base.extensions.debug
 import javax.inject.Inject
 
 /**

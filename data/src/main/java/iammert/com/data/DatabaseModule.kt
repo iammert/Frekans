@@ -1,10 +1,9 @@
-package iammert.com.frekans.di.module
+package iammert.com.data
 
 import android.arch.persistence.room.Room
 import android.content.Context
 import dagger.Module
 import dagger.Provides
-import iammert.com.frekans.data.FrekansDatabase
 import javax.inject.Singleton
 
 /**

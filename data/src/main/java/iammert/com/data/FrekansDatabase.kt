@@ -1,4 +1,4 @@
-package iammert.com.frekans.data
+package iammert.com.data
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase

@@ -6,8 +6,8 @@ import dagger.android.support.AndroidSupportInjectionModule
 import iammert.com.frekans.FrekansApplication
 import iammert.com.frekans.di.module.ActivityBuilderModule
 import iammert.com.frekans.di.module.AppModule
-import iammert.com.frekans.di.module.DatabaseModule
-import iammert.com.frekans.di.module.NetworkModule
+import iammert.com.data.DatabaseModule
+import iammert.com.data.NetworkModule
 import javax.inject.Singleton
 
 /**

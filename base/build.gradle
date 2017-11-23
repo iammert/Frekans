@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+def libraries = rootProject.ext.libraries
+def configuration = rootProject.ext.configuration
+
+android {
+    compileSdkVersion configuration.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion configuration.minSdkVersion
+    }
+}
+
+dependencies {
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:${libraries.kotlin}"
+    api "com.google.dagger:dagger:${libraries.dagger}"
+    api "io.reactivex.rxjava2:rxjava:${libraries.rxjava}"
+}
