@@ -1,7 +1,6 @@
 package iammert.com.frekans.ui.main
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import iammert.com.frekans.util.SingleLiveEvent
 import javax.inject.Inject
@@ -15,13 +14,17 @@ class MainViewModel @Inject constructor() : ViewModel() {
         HOME, TRENDING, SEARCH, FAVOURITE, SETTINGS
     }
 
-    var navigationItem = SingleLiveEvent<NavigationItem>()
+    private val navigationItem = SingleLiveEvent<NavigationItem>()
 
     init {
         navigationItem.value = NavigationItem.HOME
     }
 
     fun navigation(): LiveData<NavigationItem> = navigationItem
+
+    fun navigate(item: NavigationItem) {
+        navigationItem.value = item
+    }
 
 }
 

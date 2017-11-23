@@ -27,10 +27,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         binding.bottomBar.setOnTabSelectListener(
                 { tabId ->
                     when (tabId) {
-                        R.id.tab_home -> supportFragmentManager.beginTransaction()
-                                .replace(R.id.container, HomeFragment.newInstance())
-                                .commit()
+                        R.id.tab_home -> viewModel.navigate(MainViewModel.NavigationItem.HOME)
                     }
+
                 }, false)
 
         viewModel.navigation().reObserve(this, Observer { navigate(it) })
