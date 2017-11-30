@@ -7,9 +7,7 @@ import android.support.v7.app.AppCompatActivity
  * Created by mertsimsek on 30/11/2017.
  */
 fun AppCompatActivity.replaceFragment(layoutId: Int, fragment: Fragment) {
-    supportFragmentManager.transaction {
-        replace(layoutId, fragment)
-    }
+    supportFragmentManager.transaction { replace(layoutId, fragment) }
 }
 
 fun AppCompatActivity.addFragment(layoutId: Int, fragment: Fragment) {
