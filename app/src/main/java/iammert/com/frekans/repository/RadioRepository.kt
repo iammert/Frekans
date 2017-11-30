@@ -33,4 +33,6 @@ class RadioRepository @Inject constructor(private val service: FrekansService,
                                 .subscribe()
                     }
                     .subscribeOn(Schedulers.single())
+
+    fun getTrendingRadios() = service.getTrending().toFlowable().subscribeOn(Schedulers.io())
 }

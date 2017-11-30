@@ -1,5 +1,6 @@
 package iammert.com.frekans.data.remote
 
+import iammert.com.data.remote.model.Radio
 import iammert.com.frekans.data.remote.model.Genre
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -11,4 +12,7 @@ interface FrekansService {
 
     @GET("genre")
     fun getGenres(): Single<List<Genre>>
+
+    @GET("popular")
+    fun getTrending(): Single<List<Radio>>
 }

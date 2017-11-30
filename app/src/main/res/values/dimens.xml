@@ -17,5 +17,6 @@
     <dimen name="size_text_xlarge">28sp</dimen>
 
     <dimen name="size_square_card">150dp</dimen>
+    <dimen name="size_avatar">56dp</dimen>
 
 </resources>

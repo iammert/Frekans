@@ -37,9 +37,9 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
         binding.bottomBar.setOnTabSelectListener(
                 { tabId ->
                     when (tabId) {
-                        R.id.tab_home -> viewModel.navigate(MainViewModel.NavigationItem.HOME)
+                        R.id.tab_home -> viewModel.navigate(HOME)
+                        R.id.tab_trending -> viewModel.navigate(TRENDING)
                     }
-
                 })
 
         viewModel.navigation().reObserve(this, Observer { navigate(it) })

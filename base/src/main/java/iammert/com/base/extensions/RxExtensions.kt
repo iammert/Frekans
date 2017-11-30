@@ -1,5 +1,6 @@
 package iammert.com.base.extensions
 
+import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -10,6 +11,10 @@ import io.reactivex.schedulers.Schedulers
  */
 
 fun <T> Single<T>.doIOapplyDatabase(): Single<T>{
+    return this.subscribeOn(Schedulers.io()).observeOn(Schedulers.single())
+}
+
+fun <T> Flowable<T>.doIOapplyDatabase(): Flowable<T>{
     return this.subscribeOn(Schedulers.io()).observeOn(Schedulers.single())
 }
 
