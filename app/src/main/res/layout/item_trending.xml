@@ -11,13 +11,16 @@
     </data>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true">
 
         <ImageView
             android:id="@+id/imageview_avatar"
             android:layout_width="@dimen/size_avatar"
             android:layout_height="@dimen/size_avatar"
             android:layout_centerVertical="true"
+            android:layout_margin="@dimen/margin_16dp"
             app:imageUrl="@{radio.logoSmall}"
             app:shape="@{Shape.CIRCLE}"/>
 
@@ -31,12 +34,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{radio.radioName}"/>
+                android:text="@{radio.radioName}"
+                android:textAppearance="@style/BaseTextAppearance"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{radio.dial}"/>
+                android:text="@{radio.dial}"
+                android:textAppearance="@style/BaseTextAppearance"/>
 
         </LinearLayout>
 

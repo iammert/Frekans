@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class Radio(
         @SerializedName("id") val id: String,
-        @SerializedName("radio_name") val radioName: String,
+        @SerializedName("radioName") val radioName: String,
         @SerializedName("website") val website: String,
         @SerializedName("band") val band: String,
         @SerializedName("city") val city: String,
