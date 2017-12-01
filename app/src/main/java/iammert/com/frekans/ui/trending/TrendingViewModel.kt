@@ -1,5 +1,6 @@
 package iammert.com.frekans.ui.trending
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import iammert.com.base.extensions.plusAssign
 import iammert.com.data.remote.model.Radio
@@ -14,12 +15,12 @@ import javax.inject.Inject
 class TrendingViewModel @Inject constructor(radioRepository: RadioRepository) : RxAwareViewModel() {
 
     private val trendingLiveData = MutableLiveData<List<Radio>>()
+    val trendings: LiveData<List<Radio>>
+        get() = trendingLiveData
 
     init {
         disposables += radioRepository.getTrendingRadios()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(trendingLiveData::setValue)
     }
-
-    fun getTrendings() = trendingLiveData
 }

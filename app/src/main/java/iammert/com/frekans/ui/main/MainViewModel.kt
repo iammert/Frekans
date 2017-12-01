@@ -16,11 +16,12 @@ class MainViewModel @Inject constructor() : ViewModel() {
 
     private val navigationItem = SingleLiveEvent<NavigationItem>()
 
+    val navigationLiveData: LiveData<NavigationItem>
+        get() = navigationItem
+
     init {
         navigationItem.value = NavigationItem.HOME
     }
-
-    fun navigation(): LiveData<NavigationItem> = navigationItem
 
     fun navigate(item: NavigationItem) {
         navigationItem.value = item

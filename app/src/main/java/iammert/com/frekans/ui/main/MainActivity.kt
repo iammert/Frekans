@@ -42,7 +42,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
                     }
                 })
 
-        viewModel.navigation().reObserve(this, Observer { navigate(it) })
+        viewModel.navigationLiveData.reObserve(this, Observer { navigate(it) })
     }
 
     private fun navigate(navigationItem: MainViewModel.NavigationItem?) {

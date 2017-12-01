@@ -26,7 +26,7 @@ class TrendingFragment : BaseFragment<TrendingViewModel, FragmentTrendingBinding
 
         val adapter = TrendingAdapter()
         binding.recyclerView.adapter = adapter
-        viewModel.getTrendings().reObserve(this, Observer { it?.let { adapter.setTrendingList(it) } })
+        viewModel.trendings.reObserve(this, Observer { it?.let { adapter.setTrendingList(it) } })
     }
 
     companion object {

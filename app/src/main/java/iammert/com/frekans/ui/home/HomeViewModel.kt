@@ -1,5 +1,6 @@
 package iammert.com.frekans.ui.home
 
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import iammert.com.frekans.data.local.entity.GenreEntity
 import iammert.com.frekans.repository.RadioRepository
@@ -15,11 +16,12 @@ class HomeViewModel @Inject constructor(radioRepository: RadioRepository) : RxAw
 
     private val genresLiveData = MutableLiveData<List<GenreEntity>>()
 
+    val genres: LiveData<List<GenreEntity>>
+        get() = genresLiveData
+
     init {
         disposables += radioRepository.getGenres()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(genresLiveData::setValue)
     }
-
-    fun getGenres() = genresLiveData
 }

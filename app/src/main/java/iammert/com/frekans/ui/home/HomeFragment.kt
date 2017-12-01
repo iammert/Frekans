@@ -28,7 +28,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
         val genreAdapter = GenresAdapter()
         binding.recyclerView.adapter = genreAdapter
 
-        viewModel.getGenres().reObserve(this, Observer {
+        viewModel.genres.reObserve(this, Observer {
             it?.let { genreAdapter.setGenres(it) }
         })
     }
