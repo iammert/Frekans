@@ -45,6 +45,7 @@ dependencies {
 
     implementation project(":base")
     implementation project(":data")
+    implementation project(":player")
 
     androidTestImplementation "com.android.support.test:runner:${libraries.supportTestRunner}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${libraries.espressoCore}"
@@ -68,9 +69,5 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.13'
     kapt 'com.google.dagger:dagger-android-processor:2.13'
     kapt "android.arch.lifecycle:compiler:1.0.0"
-    kapt 'com.android.databinding:compiler:3.0.0'
-}
-
-repositories {
-    mavenCentral()
+    kapt 'com.android.databinding:compiler:3.0.1'
 }
