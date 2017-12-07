@@ -7,8 +7,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.1.51"
+        classpath "com.android.tools.build:gradle:3.0.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.0"
     }
 }
 
@@ -36,7 +36,7 @@ ext {
     ]
 
     libraries = [
-            kotlin           : "1.1.51",
+            kotlin           : "1.2.0",
             support          : "27.0.1",
             arch             : "1.0.0",
             archRuntime      : "1.0.3",
