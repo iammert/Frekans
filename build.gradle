@@ -37,7 +37,7 @@ ext {
 
     libraries = [
             kotlin           : "1.2.0",
-            support          : "27.0.1",
+            support          : "27.0.2",
             arch             : "1.0.0",
             archRuntime      : "1.0.3",
             dagger           : "2.13",
