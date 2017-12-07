@@ -14,12 +14,12 @@ import javax.inject.Singleton
  * Created by mertsimsek on 08/11/2017.
  */
 @Singleton
-@Component(modules = arrayOf(
-        AndroidSupportInjectionModule::class,
-        AppModule::class,
-        NetworkModule::class,
-        DatabaseModule::class,
-        ActivityBuilderModule::class))
+@Component(modules = [
+    AndroidSupportInjectionModule::class,
+    AppModule::class,
+    NetworkModule::class,
+    DatabaseModule::class,
+    ActivityBuilderModule::class])
 interface AppComponent : AndroidInjector<FrekansApplication> {
     @Component.Builder
     abstract class Builder : AndroidInjector.Builder<FrekansApplication>()

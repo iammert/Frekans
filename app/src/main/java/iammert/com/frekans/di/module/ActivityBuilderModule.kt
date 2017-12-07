@@ -12,6 +12,6 @@ import iammert.com.frekans.ui.main.MainActivity
 abstract class ActivityBuilderModule {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = arrayOf(FragmentBuilderModule::class))
+    @ContributesAndroidInjector(modules = [FragmentBuilderModule::class])
     abstract fun mainActivity(): MainActivity
 }
