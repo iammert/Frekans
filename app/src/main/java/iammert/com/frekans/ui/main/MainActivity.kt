@@ -17,15 +17,14 @@ import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.TRENDING
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.SEARCH
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.FAVOURITE
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.SETTINGS
+import iammert.com.frekans.util.delegates.contentView
 
 /**
  * Created by mertsimsek on 06/11/2017.
  */
-class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
+class MainActivity : BaseActivity<MainViewModel>() {
 
-    override fun getLayoutRes(): Int {
-        return R.layout.activity_main
-    }
+    private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
 
     override fun getViewModel(): Class<MainViewModel> {
         return MainViewModel::class.java

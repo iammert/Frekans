@@ -2,22 +2,28 @@ package iammert.com.frekans.ui.trending
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.FragmentTrendingBinding
 import iammert.com.frekans.ui.BaseFragment
+import iammert.com.frekans.util.delegates.inflate
 import iammert.com.frekans.util.extension.reObserve
 
 /**
  * Created by mertsimsek on 08/11/2017.
  */
-class TrendingFragment : BaseFragment<TrendingViewModel, FragmentTrendingBinding>() {
+class TrendingFragment : BaseFragment<TrendingViewModel>() {
+
+    private val binding: FragmentTrendingBinding by inflate(R.layout.fragment_trending)
 
     override fun getViewModel(): Class<TrendingViewModel> {
         return TrendingViewModel::class.java
     }
 
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_trending
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
