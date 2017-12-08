@@ -9,7 +9,7 @@ import iammert.com.frekans.util.view.CircleTransform
 /**
  * Created by mertsimsek on 15/11/2017.
  */
-public enum class Shape {
+enum class Shape {
     SQUARE, CIRCLE
 }
 
