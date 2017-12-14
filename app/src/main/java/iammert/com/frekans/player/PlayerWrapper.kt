@@ -9,6 +9,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import iammert.com.player.MediaSourceProvider
 import com.google.android.exoplayer2.DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER
 import com.google.android.exoplayer2.ExoPlayerFactory
+import iammert.com.frekans.util.SingletonInstance
 
 /**
  * Created by mertsimsek on 12/12/2017.
@@ -26,12 +27,5 @@ class PlayerWrapper private constructor(private val context: Context) : Player.D
         ExoPlayerFactory.newSimpleInstance(renderersFactory, trackSelector)
     }
 
-    companion object {
-        @Volatile private var INSTANCE: PlayerWrapper? = null
-
-        fun getInstance(context: Context) =
-                INSTANCE ?: synchronized(this) {
-                    INSTANCE ?: PlayerWrapper(context.applicationContext).also { INSTANCE = it }
-                }
-    }
+    companion object : SingletonInstance<Context, PlayerWrapper>(::PlayerWrapper)
 }
