@@ -1,15 +1,12 @@
 package iammert.com.frekans.player
 
 import android.content.Context
-import com.google.android.exoplayer2.DefaultRenderersFactory
-import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import iammert.com.player.MediaSourceProvider
 import com.google.android.exoplayer2.DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER
-import com.google.android.exoplayer2.ExoPlaybackException
-import com.google.android.exoplayer2.ExoPlayerFactory
 import iammert.com.frekans.util.SingletonInstance
 import iammert.com.player.PlayerListener
 import iammert.com.player.PlayerState
@@ -30,7 +27,7 @@ class PlayerWrapper private constructor(private val context: Context) : Player.D
         ExoPlayerFactory.newSimpleInstance(renderersFactory, trackSelector)
     }
 
-    private var playerListener: PlayerListener? = null
+    private var playerListener: PlayerListener?= null
 
     init {
         simpleExoPlayer.playWhenReady = true
@@ -43,6 +40,12 @@ class PlayerWrapper private constructor(private val context: Context) : Player.D
 
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
         super.onPlayerStateChanged(playWhenReady, playbackState)
+        playerListener?.apply {
+            when (playbackState) {
+                Player.STATE_READY -> onStateChanged(PlayerState.PLAYING)
+                Player.STATE_IDLE -> onStateChanged(PlayerState.IDLE)
+            }
+        }
     }
 
     override fun onLoadingChanged(isLoading: Boolean) {

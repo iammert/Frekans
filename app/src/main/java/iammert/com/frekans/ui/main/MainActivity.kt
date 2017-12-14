@@ -5,6 +5,7 @@ import android.os.Bundle
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.ActivityMainBinding
 import iammert.com.frekans.ui.BaseActivity
+import iammert.com.frekans.ui.BaseServiceActivity
 import iammert.com.frekans.ui.favourite.FavouriteFragment
 import iammert.com.frekans.ui.home.HomeFragment
 import iammert.com.frekans.util.extension.reObserve
@@ -22,7 +23,7 @@ import iammert.com.frekans.util.delegates.contentView
 /**
  * Created by mertsimsek on 06/11/2017.
  */
-class MainActivity : BaseActivity<MainViewModel>() {
+class MainActivity : BaseServiceActivity<MainViewModel>() {
 
     private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
 

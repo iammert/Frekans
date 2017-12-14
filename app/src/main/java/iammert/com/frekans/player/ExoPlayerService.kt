@@ -33,9 +33,7 @@ class ExoPlayerService : Service(), PlayerListener {
 
     fun removePlayerListener(playerListener: PlayerListener) = listeners.removeIfExist(playerListener)
 
-    override fun onStateChanged(state: PlayerState) {
-        TODO()
-    }
+    override fun onStateChanged(state: PlayerState) = listeners.forEach { it.onStateChanged(state) }
 
     companion object {
         fun newIntent(context: Context) = Intent(context, ExoPlayerService::class.java)
