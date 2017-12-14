@@ -9,9 +9,10 @@ import iammert.com.player.PlayerListener
 /**
  * Created by mertsimsek on 06/12/2017.
  */
-class ExoPlayerService : Service(), PlayerListener{
+class ExoPlayerService : Service(), PlayerListener {
 
-    private val binder = PlayerServiceBinder()
+    private val binder by lazy { PlayerServiceBinder() }
+    private val playerWrapper by lazy { PlayerWrapper.getInstance(applicationContext) }
 
     inner class PlayerServiceBinder : Binder() {
         fun getService() = this@ExoPlayerService
