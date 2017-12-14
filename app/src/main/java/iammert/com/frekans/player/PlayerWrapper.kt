@@ -29,10 +29,9 @@ class PlayerWrapper private constructor(private val context: Context) : Player.D
     companion object {
         @Volatile private var INSTANCE: PlayerWrapper? = null
 
-        fun getInstance(context: Context): PlayerWrapper {
-            INSTANCE ?: synchronized(this) {
-                INSTANCE ?: PlayerWrapper(context.applicationContext).also { INSTANCE = it }
-            }
-        }
+        fun getInstance(context: Context) =
+                INSTANCE ?: synchronized(this) {
+                    INSTANCE ?: PlayerWrapper(context.applicationContext).also { INSTANCE = it }
+                }
     }
 }
