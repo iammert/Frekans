@@ -5,25 +5,24 @@ import android.os.Bundle
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.ActivityMainBinding
 import iammert.com.frekans.ui.BaseActivity
-import iammert.com.frekans.ui.BaseServiceActivity
 import iammert.com.frekans.ui.favourite.FavouriteFragment
 import iammert.com.frekans.ui.home.HomeFragment
-import iammert.com.frekans.util.extension.reObserve
 import iammert.com.frekans.ui.search.SearchFragment
 import iammert.com.frekans.ui.settings.SettingsFragment
 import iammert.com.frekans.ui.trending.TrendingFragment
-import iammert.com.frekans.util.extension.replaceFragment
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.HOME
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.TRENDING
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.SEARCH
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.FAVOURITE
 import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.SETTINGS
 import iammert.com.frekans.util.delegates.contentView
+import iammert.com.frekans.util.extension.reObserve
+import iammert.com.frekans.util.extension.replaceFragment
 
 /**
  * Created by mertsimsek on 06/11/2017.
  */
-class MainActivity : BaseServiceActivity<MainViewModel>() {
+class MainActivity : BaseActivity<MainViewModel>() {
 
     private val binding: ActivityMainBinding by contentView(R.layout.activity_main)
 
