@@ -2,13 +2,15 @@ package iammert.com.frekans.ui.main
 
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModel
+import iammert.com.frekans.player.PlayerDataSource
 import iammert.com.frekans.util.SingleLiveEvent
+import iammert.com.player.PlayerState
 import javax.inject.Inject
 
 /**
  * Created by mertsimsek on 12/11/2017.
  */
-class MainViewModel @Inject constructor() : ViewModel() {
+class MainViewModel @Inject constructor(private val playerDataSource: PlayerDataSource) : ViewModel() {
 
     enum class NavigationItem {
         HOME, TRENDING, SEARCH, FAVOURITE, SETTINGS
@@ -18,6 +20,9 @@ class MainViewModel @Inject constructor() : ViewModel() {
 
     val navigationLiveData: LiveData<NavigationItem>
         get() = navigationItem
+
+    val playerState: LiveData<PlayerState>
+        get() = playerDataSource.playerState
 
     init {
         navigationItem.value = NavigationItem.HOME

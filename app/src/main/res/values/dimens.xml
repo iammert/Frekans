@@ -18,5 +18,9 @@
 
     <dimen name="size_square_card">150dp</dimen>
     <dimen name="size_avatar">56dp</dimen>
+    <dimen name="size_avatar_bottom_player">48dp</dimen>
+
+    <dimen name="height_bottom_navigation">60dp</dimen>
+    <dimen name="height_bottom_player">60dp</dimen>
 
 </resources>

@@ -1,23 +1,23 @@
 package iammert.com.frekans.player
 
-import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
-import iammert.com.frekans.util.extension.addIfAbsent
-import iammert.com.frekans.util.extension.removeIfExist
-import iammert.com.player.PlayerListener
+import dagger.android.DaggerService
 import iammert.com.player.PlayerState
+import io.reactivex.subjects.Subject
+import javax.inject.Inject
 
 /**
  * Created by mertsimsek on 06/12/2017.
  */
-class ExoPlayerService : Service(), PlayerListener {
+class ExoPlayerService : DaggerService() {
 
     private val binder by lazy { PlayerServiceBinder() }
-    private val playerWrapper by lazy { PlayerWrapper.getInstance(applicationContext) }
-    private val listeners by lazy { ArrayList<PlayerListener>() }
+
+    @Inject
+    lateinit var playerWrapper: PlayerWrapper
 
     inner class PlayerServiceBinder : Binder() {
         fun getService() = this@ExoPlayerService
@@ -29,13 +29,12 @@ class ExoPlayerService : Service(), PlayerListener {
         return START_NOT_STICKY
     }
 
-    fun addPlayerListener(playerListener: PlayerListener) = listeners.addIfAbsent(playerListener)
-
-    fun removePlayerListener(playerListener: PlayerListener) = listeners.removeIfExist(playerListener)
-
-    override fun onStateChanged(state: PlayerState) = listeners.forEach { it.onStateChanged(state) }
+    fun getPlayerState(): Subject<PlayerState> = playerWrapper.playerStateSubject
 
     companion object {
         fun newIntent(context: Context) = Intent(context, ExoPlayerService::class.java)
+        fun getService(binder: IBinder?): ExoPlayerService {
+            return (binder as ExoPlayerService.PlayerServiceBinder?)!!.getService()
+        }
     }
 }

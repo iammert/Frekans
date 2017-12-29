@@ -4,6 +4,7 @@ import iammert.com.data.remote.model.Stream
 import iammert.com.player.MediaSourceProvider
 import iammert.com.player.SourceType
 
+
 /**
  * Created by mertsimsek on 06/12/2017.
  */

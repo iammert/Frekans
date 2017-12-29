@@ -23,5 +23,4 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideGenreDao(db: FrekansDatabase) = db.getGenreDao()
-
 }

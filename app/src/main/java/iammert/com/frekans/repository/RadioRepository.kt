@@ -4,8 +4,17 @@ import iammert.com.frekans.data.local.dao.GenreDao
 import iammert.com.frekans.data.local.entity.GenreEntity
 import iammert.com.frekans.data.remote.FrekansService
 import iammert.com.base.extensions.doIOapplyDatabase
+import iammert.com.data.local.dao.RadiosDao
+import iammert.com.data.local.dao.RecentlyPlayedDao
+import iammert.com.data.local.entity.RadioEntity
+import iammert.com.data.local.entity.RecentlyPlayedEntity
+import iammert.com.data.remote.model.Radio
+import iammert.com.data.util.toRadioEntity
+import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import java.util.concurrent.Callable
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -14,6 +23,8 @@ import javax.inject.Singleton
  */
 @Singleton
 class RadioRepository @Inject constructor(private val service: FrekansService,
+                                          private val radiosDao: RadiosDao,
+                                          private val recentlyPlayedDao: RecentlyPlayedDao,
                                           private val genreDao: GenreDao) {
 
 
@@ -35,4 +46,12 @@ class RadioRepository @Inject constructor(private val service: FrekansService,
                     .subscribeOn(Schedulers.single())
 
     fun getTrendingRadios() = service.getTrending().toFlowable().subscribeOn(Schedulers.io())
+
+    fun addRadioToRecentlyPlayed(radio: Radio): Completable {
+        return Completable.fromCallable({ radio.toRadioEntity() }).doOnComplete {  }
+    }
+
+    fun getRecentlyPlayedRadioList(): Flowable<List<RecentlyPlayedEntity>> {
+        return recentlyPlayedDao.getRecentlyPlayedRadios()
+    }
 }

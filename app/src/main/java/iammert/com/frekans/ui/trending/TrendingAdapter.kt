@@ -11,13 +11,23 @@ import iammert.com.frekans.databinding.ItemTrendingBinding
  */
 class TrendingAdapter(private var trendingList: List<Radio> = ArrayList()) : RecyclerView.Adapter<TrendingAdapter.TrendingItemViewHolder>() {
 
-    fun setTrendingList(trendingList: List<Radio>){
+    lateinit var itemClickListener: OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClicked(radio: Radio)
+    }
+
+    fun setOnItemClickListener(itemClickListener: OnItemClickListener) {
+        this.itemClickListener = itemClickListener
+    }
+
+    fun setTrendingList(trendingList: List<Radio>) {
         this.trendingList = trendingList
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): TrendingItemViewHolder {
-        return TrendingItemViewHolder.create(parent)
+        return TrendingItemViewHolder.create(parent, itemClickListener)
     }
 
     override fun onBindViewHolder(holder: TrendingItemViewHolder, position: Int) {
@@ -26,16 +36,22 @@ class TrendingAdapter(private var trendingList: List<Radio> = ArrayList()) : Rec
 
     override fun getItemCount() = trendingList.size
 
-    class TrendingItemViewHolder(private var binding: ItemTrendingBinding) : RecyclerView.ViewHolder(binding.root) {
+    class TrendingItemViewHolder(private var binding: ItemTrendingBinding,
+                                 private var itemClickListener: OnItemClickListener?) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.root.setOnClickListener { itemClickListener?.onItemClicked(binding.radio!!) }
+        }
+
         fun bind(genre: Radio) = with(binding) {
             binding.radio = genre
             executePendingBindings()
         }
 
         companion object {
-            fun create(parent: ViewGroup?): TrendingItemViewHolder {
+            fun create(parent: ViewGroup?, itemClickListener: OnItemClickListener?): TrendingItemViewHolder {
                 val trendingBinding = ItemTrendingBinding.inflate(LayoutInflater.from(parent?.context), parent, false)
-                return TrendingItemViewHolder(trendingBinding)
+                return TrendingItemViewHolder(trendingBinding, itemClickListener)
             }
         }
     }

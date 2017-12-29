@@ -8,6 +8,8 @@ import iammert.com.frekans.di.module.ActivityBuilderModule
 import iammert.com.frekans.di.module.AppModule
 import iammert.com.data.DatabaseModule
 import iammert.com.data.NetworkModule
+import iammert.com.frekans.di.module.ServiceBuilderModule
+import iammert.com.player.PlayerModule
 import javax.inject.Singleton
 
 /**
@@ -19,6 +21,8 @@ import javax.inject.Singleton
     AppModule::class,
     NetworkModule::class,
     DatabaseModule::class,
+    PlayerModule::class,
+    ServiceBuilderModule::class,
     ActivityBuilderModule::class])
 interface AppComponent : AndroidInjector<FrekansApplication> {
     @Component.Builder

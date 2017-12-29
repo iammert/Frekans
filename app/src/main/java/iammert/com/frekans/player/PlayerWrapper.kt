@@ -1,24 +1,30 @@
 package iammert.com.frekans.player
 
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import android.content.Context
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
-import iammert.com.player.MediaSourceProvider
 import com.google.android.exoplayer2.DefaultRenderersFactory.EXTENSION_RENDERER_MODE_PREFER
-import iammert.com.frekans.util.SingletonInstance
-import iammert.com.player.PlayerListener
+import iammert.com.data.remote.model.Stream
+import iammert.com.frekans.util.extension.sourceType
+import iammert.com.player.MediaSourceProvider
 import iammert.com.player.PlayerState
+import io.reactivex.subjects.BehaviorSubject
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Created by mertsimsek on 12/12/2017.
  */
-class PlayerWrapper private constructor(private val context: Context) : Player.DefaultEventListener() {
+@Singleton
+class PlayerWrapper @Inject constructor(val context: Context,
+                                        val mediaSourceProvider: MediaSourceProvider) :
+        Player.DefaultEventListener() {
 
-    private val mediaSourceProvider by lazy {
-        MediaSourceProvider(context)
-    }
+    val playerStateSubject = BehaviorSubject.create<PlayerState>()
 
     private val simpleExoPlayer by lazy {
         val trackSelectionFactory = AdaptiveTrackSelection.Factory(DefaultBandwidthMeter())
@@ -27,37 +33,35 @@ class PlayerWrapper private constructor(private val context: Context) : Player.D
         ExoPlayerFactory.newSimpleInstance(renderersFactory, trackSelector)
     }
 
-    private var playerListener: PlayerListener?= null
-
     init {
         simpleExoPlayer.playWhenReady = true
         simpleExoPlayer.addListener(this)
     }
 
-    fun setListener(playerListener: PlayerListener) {
-        this.playerListener = playerListener
-    }
-
     override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
         super.onPlayerStateChanged(playWhenReady, playbackState)
-        playerListener?.apply {
-            when (playbackState) {
-                Player.STATE_READY -> onStateChanged(PlayerState.PLAYING)
-                Player.STATE_IDLE -> onStateChanged(PlayerState.IDLE)
-            }
+        when (playbackState) {
+            Player.STATE_READY -> playerStateSubject.onNext(PlayerState.PLAYING)
+            Player.STATE_IDLE -> playerStateSubject.onNext(PlayerState.IDLE)
         }
     }
 
     override fun onLoadingChanged(isLoading: Boolean) {
         super.onLoadingChanged(isLoading)
-        playerListener?.onStateChanged(PlayerState.LOADING)
-
+        playerStateSubject.onNext(PlayerState.LOADING)
     }
 
     override fun onPlayerError(error: ExoPlaybackException?) {
         super.onPlayerError(error)
-        playerListener?.onStateChanged(PlayerState.ERROR)
+        playerStateSubject.onNext(PlayerState.ERROR)
     }
 
-    companion object : SingletonInstance<Context, PlayerWrapper>(::PlayerWrapper)
+    fun start(stream: Stream) {
+        val mediaSource = mediaSourceProvider.getMediaSource(stream.url, stream.sourceType())
+        simpleExoPlayer.prepare(mediaSource)
+    }
+
+    fun stop() {
+        simpleExoPlayer.stop()
+    }
 }
