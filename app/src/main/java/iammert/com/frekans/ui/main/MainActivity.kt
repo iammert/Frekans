@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.os.Bundle
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.ActivityMainBinding
+import iammert.com.frekans.player.PlayerDataState
 import iammert.com.frekans.ui.BaseActivity
 import iammert.com.frekans.ui.favourite.FavouriteFragment
 import iammert.com.frekans.ui.home.HomeFragment
@@ -18,7 +19,6 @@ import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.SETTINGS
 import iammert.com.frekans.util.delegates.contentView
 import iammert.com.frekans.util.extension.reObserve
 import iammert.com.frekans.util.extension.replaceFragment
-import iammert.com.player.PlayerState
 
 /**
  * Created by mertsimsek on 06/11/2017.
@@ -56,7 +56,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         }
     }
 
-    private fun updatePlayerState(playerState: PlayerState?) {
-
+    private fun updatePlayerState(playerDataState: PlayerDataState?) {
+        binding.playerDataState = playerDataState
     }
 }

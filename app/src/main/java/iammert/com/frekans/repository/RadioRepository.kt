@@ -51,7 +51,7 @@ class RadioRepository @Inject constructor(private val service: FrekansService,
     fun addRadioToRecentlyPlayed(radio: Radio): Completable {
         return Single.fromCallable({ radio.toRadioEntity() })
                 .doOnSuccess { radiosDao.insertRadio(it) }
-                .map { RecentlyPlayedEntity(radioId = it.id, dateUpdated = Date()) }
+                .map { RecentlyPlayedEntity(radioId = it.id) }
                 .doOnSuccess { recentlyPlayedDao.insertRecentlyPlayedRadio(it) }
                 .subscribeOn(Schedulers.newThread())
                 .toCompletable()

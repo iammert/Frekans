@@ -16,7 +16,9 @@ enum class Shape {
 }
 
 @BindingAdapter("imageUrl", "placeHolder", "shape", requireAll = false)
-fun load(view: ImageView, url: String, placeHolder: Drawable?, shape: Shape?) {
+fun load(view: ImageView, url: String?, placeHolder: Drawable?, shape: Shape?) {
+    if (url == null) return
+
     val requestCreator = Picasso.with(view.context)
             .load(url)
             .placeholder(placeHolder)

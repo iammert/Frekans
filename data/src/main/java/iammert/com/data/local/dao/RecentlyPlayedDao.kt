@@ -19,9 +19,9 @@ abstract class RecentlyPlayedDao {
     abstract fun insertRecentlyPlayedRadio(recentlyPlayedEntity: RecentlyPlayedEntity)
 
     @Query("SELECT * FROM radios " +
-            "INNER JOIN recently_played_radio " +
+            "JOIN recently_played_radio " +
             "ON radios.id = recently_played_radio.radio_id " +
-            "ORDER BY datetime(date_updated) " +
+            "ORDER BY recently_played_radio.id " +
             "DESC LIMIT 1")
     abstract fun getLastRecentlyPlayedRadio(): Flowable<RadioEntity>
 }

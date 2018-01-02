@@ -1,17 +1,12 @@
 package iammert.com.frekans.player
 
 import android.app.Service
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.content.Context
-import iammert.com.data.local.dao.RecentlyPlayedDao
 import iammert.com.data.local.entity.RadioEntity
-import iammert.com.data.remote.model.Radio
-import iammert.com.data.remote.model.Stream
 import iammert.com.frekans.repository.RadioRepository
 import iammert.com.frekans.util.extension.connection
 import iammert.com.player.PlayerState
-import io.reactivex.functions.Consumer
+import io.reactivex.subjects.PublishSubject
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,15 +17,15 @@ import javax.inject.Singleton
 class PlayerDataSource @Inject constructor(context: Context,
                                            private val radioRepository: RadioRepository) {
 
-    private val playerStateLiveData = MutableLiveData<PlayerState>()
+    private val playerDataState = PublishSubject.create<PlayerDataState>()
 
-    val playerState: LiveData<PlayerState>
-        get() = playerStateLiveData
+    private var currentStreamIndex: Int = 0
 
-    private lateinit var service: ExoPlayerService
+    private var playerState: PlayerState = PlayerState.IDLE
 
     private lateinit var currentRadio: RadioEntity
-    private var currentStreamIndex = 0
+
+    private lateinit var service: ExoPlayerService
 
     private val serviceConnection = connection {
         serviceConnected { _, binder ->
@@ -44,30 +39,39 @@ class PlayerDataSource @Inject constructor(context: Context,
         context.applicationContext.bindService(intent, serviceConnection, Service.BIND_AUTO_CREATE)
     }
 
+    fun getPlayerDataState() = playerDataState
+
     private fun observe() {
         service.getPlayerState().subscribe { state ->
-            playerStateLiveData.value = state
+            playerState = state
             playNextOnStreamError(state)
+            emitPlayerDataState()
         }
 
         radioRepository.getRecentlyPlayedRadio()
-                .distinct()
                 .skip(1)
                 .subscribe({
                     currentRadio = it
                     currentStreamIndex = 0
-                    service.start(it.streams!![currentStreamIndex])
+                    start()
+                    emitPlayerDataState()
                 })
     }
 
     private fun playNextOnStreamError(state: PlayerState) {
-        if (currentRadio.streams?.size?.minus( 1) == currentStreamIndex) {
-            return
-        }
+        if (currentRadio.streams?.size?.minus(1) == currentStreamIndex) return
 
         if (state == PlayerState.ERROR) {
             currentStreamIndex++
-            service.start(currentRadio.streams!![currentStreamIndex])
+            start()
         }
+    }
+
+    private fun start() {
+        service.start(currentRadio.streams!![currentStreamIndex])
+    }
+
+    private fun emitPlayerDataState() {
+        playerDataState.onNext(PlayerDataState(currentRadio, playerState, currentStreamIndex))
     }
 }

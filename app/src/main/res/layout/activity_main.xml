@@ -5,47 +5,60 @@
     <data>
 
         <variable
-            name="playerState"
-            type="iammert.com.player.PlayerState" />
+            name="playerDataState"
+            type="iammert.com.frekans.player.PlayerDataState" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_bottom_player">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="@dimen/size_avatar_bottom_player"
-                android:layout_height="@dimen/size_avatar_bottom_player"
-                android:layout_centerVertical="true"
-                android:layout_margin="@dimen/margin_8dp" />
+            <FrameLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/layout_player_bottom" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_margin="@dimen/margin_8dp"
-                app:playPauseToggle="@{playerState}" />
+            <RelativeLayout
+                android:id="@+id/layout_player_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_bottom_player"
+                android:layout_above="@+id/bottomBar"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="@dimen/size_bottom_player_avatar"
+                    android:layout_height="@dimen/size_bottom_player_avatar"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/margin_8dp"
+                    imageUrl="@{playerDataState.radio.logoSmall}"/>
+
+                <ImageView
+                    android:layout_width="@dimen/size_bottom_player_play_pause"
+                    android:layout_height="@dimen/size_bottom_player_play_pause"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/margin_8dp"
+                    app:playPauseToggle="@{playerDataState.playerState}" />
+
+            </RelativeLayout>
+
+            <com.roughike.bottombar.BottomBar
+                android:id="@+id/bottomBar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_bottom_navigation"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="@color/colorPrimary"
+                app:bb_activeTabColor="@color/colorWhite"
+                app:bb_behavior="iconsOnly"
+                app:bb_tabXmlResource="@xml/bottombar" />
 
         </RelativeLayout>
-
-        <com.roughike.bottombar.BottomBar
-            android:id="@+id/bottomBar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/height_bottom_navigation"
-            android:layout_gravity="bottom"
-            android:background="@color/colorPrimary"
-            app:bb_activeTabColor="@color/colorWhite"
-            app:bb_behavior="iconsOnly"
-            app:bb_tabXmlResource="@xml/bottombar" />
 
     </android.support.design.widget.CoordinatorLayout>
 </layout>

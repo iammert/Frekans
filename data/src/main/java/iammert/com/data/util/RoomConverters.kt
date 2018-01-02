@@ -22,10 +22,4 @@ class RoomConverters {
                 streamJson,
                 object : TypeToken<ArrayList<Stream>>() {}.type)
     }
-
-    @TypeConverter
-    fun dateToLong(date: Date) = date.time
-
-    @TypeConverter
-    fun longToDate(time: Long) = Date(time)
 }

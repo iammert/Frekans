@@ -55,7 +55,7 @@ class PlayerWrapper @Inject constructor(val context: Context,
     }
 
     fun start(stream: Stream) {
-        val mediaSource = mediaSourceProvider.getMediaSource(stream.url, stream.sourceType())
+        val mediaSource = mediaSourceProvider.getMediaSource(stream?.url ?: "", stream.sourceType())
         simpleExoPlayer.prepare(mediaSource)
     }
 
