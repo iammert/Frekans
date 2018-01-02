@@ -23,4 +23,12 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideGenreDao(db: FrekansDatabase) = db.getGenreDao()
+
+    @Provides
+    @Singleton
+    fun provideRadiosDao(db: FrekansDatabase) = db.getRadiosDao()
+
+    @Provides
+    @Singleton
+    fun provideRecentlyPlayedDao(db: FrekansDatabase) = db.getRecentlyPlayedDao()
 }

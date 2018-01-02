@@ -3,12 +3,15 @@ package iammert.com.data.local.entity
 import android.arch.persistence.room.ColumnInfo
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
+import android.arch.persistence.room.TypeConverters
 import iammert.com.data.remote.model.Stream
+import iammert.com.data.util.RoomConverters
 
 /**
  * Created by mertsimsek on 30/11/2017.
  */
 @Entity(tableName = "radios")
+@TypeConverters(RoomConverters::class)
 data class RadioEntity(
         @PrimaryKey @ColumnInfo(name = "id") val id: String,
         @ColumnInfo(name = "radio_name") val radioName: String,
