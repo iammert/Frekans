@@ -7,14 +7,14 @@ import com.google.gson.annotations.SerializedName
  */
 data class Radio(
         @SerializedName("id") val id: String,
-        @SerializedName("radioName") val radioName: String,
-        @SerializedName("website") val website: String,
-        @SerializedName("band") val band: String,
-        @SerializedName("city") val city: String,
-        @SerializedName("dial") val dial: String,
-        @SerializedName("language") val language: String,
-        @SerializedName("country") val country: String,
-        @SerializedName("streams") val streams: List<Stream>,
-        @SerializedName("logo_small") val logoSmall: String,
-        @SerializedName("logo_big") val logoBig: String,
-        @SerializedName("listener_count") val listenerCount: String)
+        @SerializedName("radioName") val radioName: String?,
+        @SerializedName("website") val website: String?,
+        @SerializedName("band") val band: String?,
+        @SerializedName("city") val city: String?,
+        @SerializedName("dial") val dial: String?,
+        @SerializedName("language") val language: String?,
+        @SerializedName("country") val country: String?,
+        @SerializedName("streams") val streams: List<Stream>?,
+        @SerializedName("logo_small") val logoSmall: String?,
+        @SerializedName("logo_big") val logoBig: String?,
+        @SerializedName("listener_count") val listenerCount: String?)

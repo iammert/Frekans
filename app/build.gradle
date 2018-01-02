@@ -27,8 +27,10 @@ android {
         targetSdkVersion configuration.targetSdkVersion
         versionCode configuration.versionCode
         versionName configuration.versionName
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -68,6 +70,7 @@ dependencies {
     implementation "com.squareup.picasso:picasso:${libraries.picasso}"
     implementation "com.roughike:bottom-bar:${libraries.bottombar}"
     implementation "com.facebook.stetho:stetho:${libraries.stetho}"
+    implementation "com.android.support:multidex:${libraries.multidex}"
 
     kapt 'com.google.dagger:dagger-compiler:2.13'
     kapt 'com.google.dagger:dagger-android-processor:2.13'

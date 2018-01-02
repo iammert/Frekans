@@ -4,7 +4,7 @@ import android.arch.persistence.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import iammert.com.data.remote.model.Stream
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by mertsimsek on 02/01/2018.
@@ -22,4 +22,10 @@ class RoomConverters {
                 streamJson,
                 object : TypeToken<ArrayList<Stream>>() {}.type)
     }
+
+    @TypeConverter
+    fun dateToLong(date: Date) = date.time
+
+    @TypeConverter
+    fun longToDate(time: Long) = Date(time)
 }

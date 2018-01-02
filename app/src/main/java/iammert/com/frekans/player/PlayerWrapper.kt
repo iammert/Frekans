@@ -1,7 +1,5 @@
 package iammert.com.frekans.player
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.content.Context
 import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
@@ -56,7 +54,7 @@ class PlayerWrapper @Inject constructor(val context: Context,
         playerStateSubject.onNext(PlayerState.ERROR)
     }
 
-    fun start(stream: Stream) {
+    fun start(stream: Stream?) {
         val mediaSource = mediaSourceProvider.getMediaSource(stream.url, stream.sourceType())
         simpleExoPlayer.prepare(mediaSource)
     }

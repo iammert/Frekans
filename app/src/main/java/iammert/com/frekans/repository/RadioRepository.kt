@@ -14,6 +14,7 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 import java.util.concurrent.Callable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -48,10 +49,15 @@ class RadioRepository @Inject constructor(private val service: FrekansService,
     fun getTrendingRadios() = service.getTrending().toFlowable().subscribeOn(Schedulers.io())
 
     fun addRadioToRecentlyPlayed(radio: Radio): Completable {
-        return Completable.fromCallable({ radio.toRadioEntity() }).doOnComplete {  }
+        return Single.fromCallable({ radio.toRadioEntity() })
+                .doOnSuccess { radiosDao.insertRadio(it) }
+                .map { RecentlyPlayedEntity(radioId = it.id, dateUpdated = Date()) }
+                .doOnSuccess { recentlyPlayedDao.insertRecentlyPlayedRadio(it) }
+                .subscribeOn(Schedulers.newThread())
+                .toCompletable()
     }
 
-    fun getRecentlyPlayedRadioList(): Flowable<List<RecentlyPlayedEntity>> {
-        return recentlyPlayedDao.getRecentlyPlayedRadios()
+    fun getRecentlyPlayedRadio(): Flowable<RadioEntity> {
+        return recentlyPlayedDao.getLastRecentlyPlayedRadio()
     }
 }

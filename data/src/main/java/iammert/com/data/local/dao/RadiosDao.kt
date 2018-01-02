@@ -2,6 +2,7 @@ package iammert.com.data.local.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
+import android.arch.persistence.room.OnConflictStrategy
 import iammert.com.data.local.entity.RadioEntity
 
 /**
@@ -10,6 +11,6 @@ import iammert.com.data.local.entity.RadioEntity
 @Dao
 abstract class RadiosDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertRadio(radioEntity: RadioEntity)
 }

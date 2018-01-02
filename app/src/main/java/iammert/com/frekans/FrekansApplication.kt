@@ -1,5 +1,7 @@
 package iammert.com.frekans
 
+import android.content.Context
+import android.support.multidex.MultiDex
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import iammert.com.frekans.di.component.DaggerAppComponent
@@ -16,6 +18,11 @@ class FrekansApplication : DaggerApplication() {
     override fun onCreate() {
         super.onCreate()
         tools.init(this)
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
     }
 
     override fun applicationInjector(): AndroidInjector<out FrekansApplication> =
