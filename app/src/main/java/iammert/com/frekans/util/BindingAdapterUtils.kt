@@ -3,8 +3,10 @@ package iammert.com.frekans.util
 import android.databinding.BindingAdapter
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
+import android.widget.TextView
 import com.squareup.picasso.Picasso
 import iammert.com.frekans.R
+import iammert.com.frekans.player.PlayerDataState
 import iammert.com.frekans.util.view.CircleTransform
 import iammert.com.player.PlayerState
 
@@ -42,3 +44,17 @@ fun setPlayPauseToggle(imageView: ImageView, playerState: PlayerState?) {
         }
     }
 }
+
+@BindingAdapter("playerStateText")
+fun setPlayerStateText(textView: TextView, playerDataState: PlayerDataState?) {
+    playerDataState?.playerState.let {
+        when (it) {
+            PlayerState.LOADING -> textView.text = textView.context.getString(R.string.label_stream_buffering, playerDataState?.streamIndex?.plus(1))
+            PlayerState.ERROR -> textView.text = textView.context.getString(R.string.label_stream_error)
+            else -> {
+                textView.text = playerDataState?.radio?.radioName
+            }
+        }
+    }
+}
+

@@ -11,4 +11,8 @@
     <!-- Home page texts -->
     <string name="title_homepage_genres_for_you">Genres for you</string>
 
+    <!-- Player texts-->
+    <string name="label_stream_buffering">Kaynak %1$d yükleniyor&#8230;</string>
+    <string name="label_stream_error">Kaynak hatası</string>
+
 </resources>

@@ -29,19 +29,30 @@
                 android:id="@+id/layout_player_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_bottom_player"
-                android:layout_above="@+id/bottomBar"
+                android:layout_above="@+id/bottom_bar"
                 android:background="@color/colorPrimary">
 
                 <ImageView
-                    imageUrl="@{playerDataState.radio.logoSmall}"
-                    shape="@{Shape.CIRCLE}"
+                    android:id="@+id/imageview_avatar"
                     android:layout_width="@dimen/size_bottom_player_avatar"
                     android:layout_height="@dimen/size_bottom_player_avatar"
                     android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/margin_8dp" />
+                    android:layout_margin="@dimen/margin_8dp"
+                    app:imageUrl="@{playerDataState.radio.logoSmall}"
+                    app:shape="@{Shape.CIRCLE}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/imageview_avatar"
+                    android:singleLine="true"
+                    android:textAppearance="@style/BaseTextAppearance"
+                    app:playerStateText="@{playerDataState}"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/margin_8dp"/>
 
                 <ImageView
-                    android:id="@+id/buttonPlayPause"
+                    android:id="@+id/button_play_pause"
                     android:layout_width="@dimen/size_bottom_player_play_pause"
                     android:layout_height="@dimen/size_bottom_player_play_pause"
                     android:layout_alignParentRight="true"
@@ -60,7 +71,7 @@
             </RelativeLayout>
 
             <com.roughike.bottombar.BottomBar
-                android:id="@+id/bottomBar"
+                android:id="@+id/bottom_bar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_bottom_navigation"
                 android:layout_alignParentBottom="true"
