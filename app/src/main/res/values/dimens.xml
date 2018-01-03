@@ -26,7 +26,7 @@
     <!-- bottom player -->
     <dimen name="height_bottom_navigation">60dp</dimen>
     <dimen name="height_bottom_player">60dp</dimen>
-    <dimen name="size_bottom_player_avatar">36dp</dimen>
-    <dimen name="size_bottom_player_play_pause">36dp</dimen>
+    <dimen name="size_bottom_player_avatar">32dp</dimen>
+    <dimen name="size_bottom_player_play_pause">32dp</dimen>
 
 </resources>

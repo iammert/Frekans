@@ -19,6 +19,7 @@ import iammert.com.frekans.ui.main.MainViewModel.NavigationItem.SETTINGS
 import iammert.com.frekans.util.delegates.contentView
 import iammert.com.frekans.util.extension.reObserve
 import iammert.com.frekans.util.extension.replaceFragment
+import iammert.com.frekans.util.extension.translateUp
 
 /**
  * Created by mertsimsek on 06/11/2017.
@@ -37,7 +38,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         observeViewModel()
     }
 
-    private fun initViews(){
+    private fun initViews() {
         binding.bottomBar.setOnTabSelectListener(
                 { tabId ->
                     when (tabId) {
@@ -49,7 +50,7 @@ class MainActivity : BaseActivity<MainViewModel>() {
         binding.buttonPlayPause.setOnClickListener { viewModel.controlPlayPause() }
     }
 
-    private fun observeViewModel(){
+    private fun observeViewModel() {
         viewModel.navigationLiveData.reObserve(this, Observer { navigate(it) })
         viewModel.playerState.reObserve(this, Observer { updatePlayerState(it) })
     }
@@ -66,5 +67,6 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     private fun updatePlayerState(playerDataState: PlayerDataState?) {
         binding.playerDataState = playerDataState
+        binding.layoutPlayerBottom.translateUp(true)
     }
 }
