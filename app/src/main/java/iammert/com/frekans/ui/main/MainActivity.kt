@@ -33,7 +33,11 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initViews()
+        observeViewModel()
+    }
 
+    private fun initViews(){
         binding.bottomBar.setOnTabSelectListener(
                 { tabId ->
                     when (tabId) {
@@ -42,6 +46,10 @@ class MainActivity : BaseActivity<MainViewModel>() {
                     }
                 })
 
+        binding.buttonPlayPause.setOnClickListener { viewModel.controlPlayPause() }
+    }
+
+    private fun observeViewModel(){
         viewModel.navigationLiveData.reObserve(this, Observer { navigate(it) })
         viewModel.playerState.reObserve(this, Observer { updatePlayerState(it) })
     }

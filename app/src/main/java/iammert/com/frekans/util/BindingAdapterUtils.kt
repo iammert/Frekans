@@ -36,9 +36,9 @@ fun load(view: ImageView, url: String?, placeHolder: Drawable?, shape: Shape?) {
 @BindingAdapter("playPauseToggle")
 fun setPlayPauseToggle(imageView: ImageView, playerState: PlayerState?) {
     when (playerState) {
-        PlayerState.PLAYING -> imageView.setBackgroundResource(R.drawable.ic_pause_circle_outline_white_24dp)
+        PlayerState.PLAYING -> imageView.setImageResource(R.drawable.ic_pause_white_24)
         else -> {
-            imageView.setBackgroundResource(R.drawable.ic_play_circle_outline_white_24dp)
+            imageView.setImageResource(R.drawable.ic_play_arrow_white_24)
         }
     }
 }

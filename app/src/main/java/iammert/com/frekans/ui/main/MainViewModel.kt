@@ -7,6 +7,7 @@ import iammert.com.frekans.player.PlayerDataSource
 import iammert.com.frekans.player.PlayerDataState
 import iammert.com.frekans.util.RxAwareViewModel
 import iammert.com.frekans.util.SingleLiveEvent
+import iammert.com.player.PlayerState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
@@ -40,5 +41,17 @@ class MainViewModel @Inject constructor(private val playerDataSource: PlayerData
         navigationItem.value = item
     }
 
+    fun controlPlayPause() {
+        playerDataStateLiveData.value?.radio ?: return
+        playerDataStateLiveData.value?.playerState.let {
+            when (it) {
+                PlayerState.LOADING -> return
+                PlayerState.PLAYING -> playerDataSource.stop()
+                else -> {
+                    playerDataSource.start()
+                }
+            }
+        }
+    }
 }
 

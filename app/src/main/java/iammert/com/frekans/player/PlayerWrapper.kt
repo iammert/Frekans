@@ -19,7 +19,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class PlayerWrapper @Inject constructor(val context: Context,
-                                        val mediaSourceProvider: MediaSourceProvider) :
+                                        private val mediaSourceProvider: MediaSourceProvider) :
         Player.DefaultEventListener() {
 
     val playerStateSubject = BehaviorSubject.create<PlayerState>()

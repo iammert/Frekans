@@ -67,8 +67,12 @@ class PlayerDataSource @Inject constructor(context: Context,
         }
     }
 
-    private fun start() {
+    fun start() {
         service.start(currentRadio.streams!![currentStreamIndex])
+    }
+
+    fun stop() {
+        service.stop()
     }
 
     private fun emitPlayerDataState() {
