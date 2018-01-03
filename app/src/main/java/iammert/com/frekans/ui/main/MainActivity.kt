@@ -2,6 +2,7 @@ package iammert.com.frekans.ui.main
 
 import android.arch.lifecycle.Observer
 import android.os.Bundle
+import android.view.animation.Animation
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.ActivityMainBinding
 import iammert.com.frekans.player.PlayerDataState
@@ -20,6 +21,8 @@ import iammert.com.frekans.util.delegates.contentView
 import iammert.com.frekans.util.extension.reObserve
 import iammert.com.frekans.util.extension.replaceFragment
 import iammert.com.frekans.util.extension.translateUp
+import android.widget.RelativeLayout
+
 
 /**
  * Created by mertsimsek on 06/11/2017.
@@ -67,6 +70,19 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     private fun updatePlayerState(playerDataState: PlayerDataState?) {
         binding.playerDataState = playerDataState
-        binding.layoutPlayerBottom.translateUp(true)
+
+        //TO-DO second parameter can be move to extension function and take on animation end method as higher order function
+        binding.layoutPlayerBottom.translateUp(true, object : Animation.AnimationListener {
+            override fun onAnimationRepeat(animation: Animation?) {}
+
+            override fun onAnimationStart(animation: Animation?) {}
+
+            override fun onAnimationEnd(animation: Animation?) {
+                val params = binding.container.layoutParams as RelativeLayout.LayoutParams
+                params.addRule(RelativeLayout.ABOVE, binding.layoutPlayerBottom.id)
+                binding.container.layoutParams = params
+            }
+
+        })
     }
 }
