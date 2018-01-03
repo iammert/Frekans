@@ -23,14 +23,13 @@ fun View.translateUp(onlyIfNotVisible: Boolean = false, animationListener: Anima
     if (onlyIfNotVisible && View.VISIBLE == visibility) {
         return
     }
+
     visibility = View.VISIBLE
-    afterMeasured {
-        val translateAnimation = TranslateAnimation(0f, 0f, height.toFloat(), 0f)
-        translateAnimation.apply {
-            duration = 200
-            fillAfter = true
-            setAnimationListener(animationListener)
-            startAnimation(this)
-        }
-    }
+    TranslateAnimation(0f, 0f, height.toFloat(), 0f)
+            .apply {
+                duration = 200
+                fillAfter = true
+                setAnimationListener(animationListener)
+                startAnimation(this)
+            }
 }
