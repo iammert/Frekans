@@ -5,12 +5,14 @@
     <data>
 
         <variable
-            name="genre"
-            type="iammert.com.frekans.data.local.entity.GenreEntity" />
+            name="recentlyPlayedRadio"
+            type="iammert.com.data.local.entity.RadioEntity" />
+
+        <import type="iammert.com.frekans.util.Shape" />
     </data>
 
     <LinearLayout
-        android:id="@+id/layout_genre"
+        android:id="@+id/layout_recently_played"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8dp"
@@ -18,16 +20,17 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="@dimen/size_card_large"
-            android:layout_height="@dimen/size_card_large"
-            app:imageUrl="@{genre.imageUrl}"
-            app:placeHolder="@{@drawable/ic_placeholder_cover_square}" />
+            android:layout_width="@dimen/size_card_medium"
+            android:layout_height="@dimen/size_card_medium"
+            app:imageUrl="@{recentlyPlayedRadio.logoBig}"
+            app:placeHolder="@{@drawable/ic_placeholder_cover_circle}"
+            app:shape="@{Shape.CIRCLE}" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_16dp"
-            android:text="@{genre.genreName}"
+            android:text="@{recentlyPlayedRadio.radioName}"
             android:textAppearance="@style/BaseTextAppearance" />
 
     </LinearLayout>

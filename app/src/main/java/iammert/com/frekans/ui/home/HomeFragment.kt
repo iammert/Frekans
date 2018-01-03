@@ -32,10 +32,15 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         binding.title = getString(R.string.title_homepage)
 
         val genreAdapter = GenresAdapter()
-        binding.recyclerView.adapter = genreAdapter
-
+        binding.recyclerviewGenres.adapter = genreAdapter
         viewModel.genres.reObserve(this, Observer {
             it?.let { genreAdapter.setGenres(it) }
+        })
+
+        val recentlyPlayedAdapter = RecentlyPlayedAdapter()
+        binding.recyclerviewRecentlyPlayed.adapter = recentlyPlayedAdapter
+        viewModel.recentlyPlayed.reObserve(this, Observer {
+            it?.let { recentlyPlayedAdapter.setRecentlyPlayedRadios(it) }
         })
     }
 

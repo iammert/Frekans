@@ -12,9 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,19 +29,46 @@
 
         </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_24dp"
-            android:text="@string/title_homepage_genres_for_you"
-            android:textAppearance="@style/BaseTextAppearance.Medium" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_24dp"
+                    android:text="@string/title_homepage_genres_for_you"
+                    android:textAppearance="@style/BaseTextAppearance.Medium" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_genres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_24dp"
+                    android:text="@string/title_homepage_recently_played"
+                    android:textAppearance="@style/BaseTextAppearance.Medium" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_recently_played"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+
+            </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 

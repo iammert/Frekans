@@ -6,7 +6,10 @@ import iammert.com.frekans.data.local.entity.GenreEntity
 import iammert.com.frekans.repository.RadioRepository
 import iammert.com.frekans.util.RxAwareViewModel
 import iammert.com.base.extensions.plusAssign
+import iammert.com.data.local.entity.RadioEntity
+import iammert.com.data.local.entity.RecentlyPlayedEntity
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Consumer
 import javax.inject.Inject
 
 /**
@@ -19,9 +22,20 @@ class HomeViewModel @Inject constructor(radioRepository: RadioRepository) : RxAw
     val genres: LiveData<List<GenreEntity>>
         get() = genresLiveData
 
+    private val recentlyPlayedLiveData = MutableLiveData<List<RadioEntity>>()
+
+    val recentlyPlayed: LiveData<List<RadioEntity>>
+        get() = recentlyPlayedLiveData
+
     init {
         disposables += radioRepository.getGenres()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(genresLiveData::setValue)
+
+        disposables += radioRepository
+                .getRecentlyPlayedRadios()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(recentlyPlayedLiveData::setValue)
+
     }
 }

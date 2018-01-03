@@ -18,7 +18,9 @@
     <dimen name="height_divider">0.5dp</dimen>
 
     <!-- common sizes -->
-    <dimen name="size_square_card">150dp</dimen>
+    <dimen name="size_card_large">144dp</dimen>
+    <dimen name="size_card_medium">108dp</dimen>
+    <dimen name="size_card_small">72dp</dimen>
     <dimen name="size_avatar">56dp</dimen>
 
     <!-- bottom player -->

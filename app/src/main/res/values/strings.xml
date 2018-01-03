@@ -10,9 +10,10 @@
 
     <!-- Home page texts -->
     <string name="title_homepage_genres_for_you">Genres for you</string>
+    <string name="title_homepage_recently_played">Recently played</string>
 
     <!-- Player texts-->
-    <string name="label_stream_buffering">Kaynak %1$d yükleniyor&#8230;</string>
-    <string name="label_stream_error">Kaynak hatası</string>
+    <string name="label_stream_buffering">Source 1 loading&#8230;</string>
+    <string name="label_stream_error">Source error</string>
 
 </resources>

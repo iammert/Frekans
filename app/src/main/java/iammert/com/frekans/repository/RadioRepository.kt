@@ -60,4 +60,8 @@ class RadioRepository @Inject constructor(private val service: FrekansService,
     fun getRecentlyPlayedRadio(): Flowable<RadioEntity> {
         return recentlyPlayedDao.getLastRecentlyPlayedRadio()
     }
+
+    fun getRecentlyPlayedRadios(): Flowable<List<RadioEntity>> {
+        return recentlyPlayedDao.getRecentlyPlayedRadios()
+    }
 }

@@ -24,4 +24,10 @@ abstract class RecentlyPlayedDao {
             "ORDER BY recently_played_radio.id " +
             "DESC LIMIT 1")
     abstract fun getLastRecentlyPlayedRadio(): Flowable<RadioEntity>
+
+    @Query("SELECT * FROM radios " +
+            "JOIN recently_played_radio " +
+            "ON radios.id = recently_played_radio.radio_id " +
+            "ORDER BY recently_played_radio.id DESC")
+    abstract fun getRecentlyPlayedRadios(): Flowable<List<RadioEntity>>
 }
