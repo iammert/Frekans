@@ -11,7 +11,7 @@ import iammert.com.frekans.databinding.ItemTrendingBinding
  */
 class TrendingAdapter(private var trendingList: List<RadioEntity> = ArrayList()) : RecyclerView.Adapter<TrendingAdapter.TrendingItemViewHolder>() {
 
-    lateinit var itemClickListener: OnItemClickListener
+    private lateinit var itemClickListener: OnItemClickListener
 
     interface OnItemClickListener {
         fun onItemClicked(radioEntity: RadioEntity)

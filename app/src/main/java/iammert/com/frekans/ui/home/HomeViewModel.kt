@@ -13,7 +13,7 @@ import javax.inject.Inject
 /**
  * Created by mertsimsek on 11/11/2017.
  */
-class HomeViewModel @Inject constructor(radioRepository: RadioRepository) : RxAwareViewModel() {
+class HomeViewModel @Inject constructor(private val radioRepository: RadioRepository) : RxAwareViewModel() {
 
     private val genresLiveData = MutableLiveData<List<GenreEntity>>()
 
@@ -34,5 +34,9 @@ class HomeViewModel @Inject constructor(radioRepository: RadioRepository) : RxAw
                 .getRecentlyPlayedRadios()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(recentlyPlayedLiveData::setValue)
+    }
+
+    fun addRadioToRecentlyPlayed(radioEntity: RadioEntity) {
+        disposables += radioRepository.addRadioToRecentlyPlayed(radioEntity).subscribe()
     }
 }

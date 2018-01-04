@@ -32,7 +32,7 @@ class TrendingFragment : BaseFragment<TrendingViewModel>(), TrendingAdapter.OnIt
         binding.title = getString(R.string.title_trending)
 
         val adapter = TrendingAdapter()
-        adapter.itemClickListener = this
+        adapter.setOnItemClickListener(this)
         binding.recyclerView.adapter = adapter
         viewModel.trendings.reObserve(this, Observer { it?.let { adapter.setTrendingList(it) } })
     }
