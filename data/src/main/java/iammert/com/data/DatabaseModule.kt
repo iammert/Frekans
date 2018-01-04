@@ -31,4 +31,8 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideRecentlyPlayedDao(db: FrekansDatabase) = db.getRecentlyPlayedDao()
+
+    @Provides
+    @Singleton
+    fun provideTrendingDao(db: FrekansDatabase) = db.getTrendingDao()
 }

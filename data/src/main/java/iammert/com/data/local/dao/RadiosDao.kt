@@ -13,4 +13,7 @@ abstract class RadiosDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract fun insertRadio(radioEntity: RadioEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    abstract fun insertRadios(radioEntityList: List<RadioEntity>)
 }

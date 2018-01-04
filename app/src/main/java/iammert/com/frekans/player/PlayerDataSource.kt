@@ -3,7 +3,7 @@ package iammert.com.frekans.player
 import android.app.Service
 import android.content.Context
 import iammert.com.data.local.entity.RadioEntity
-import iammert.com.frekans.repository.RadioRepository
+import iammert.com.data.repository.RadioRepository
 import iammert.com.frekans.util.extension.connection
 import iammert.com.player.PlayerState
 import io.reactivex.subjects.PublishSubject

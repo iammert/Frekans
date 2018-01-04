@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import iammert.com.data.remote.model.Radio
+import iammert.com.data.local.entity.RadioEntity
 import iammert.com.frekans.R
 import iammert.com.frekans.databinding.FragmentTrendingBinding
 import iammert.com.frekans.ui.BaseFragment
@@ -37,8 +37,8 @@ class TrendingFragment : BaseFragment<TrendingViewModel>(), TrendingAdapter.OnIt
         viewModel.trendings.reObserve(this, Observer { it?.let { adapter.setTrendingList(it) } })
     }
 
-    override fun onItemClicked(radio: Radio) {
-        viewModel.addRadioToRecentlyPlayed(radio)
+    override fun onItemClicked(radioEntity: RadioEntity) {
+        viewModel.addRadioToRecentlyPlayed(radioEntity)
     }
 
     companion object {

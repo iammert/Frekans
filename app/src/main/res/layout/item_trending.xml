@@ -3,12 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="iammert.com.frekans.util.Shape"/>
+
+        <import type="iammert.com.frekans.util.Shape" />
+
         <variable
-            name="radio"
-            type="iammert.com.data.remote.model.Radio"/>
+            name="radioEntity"
+            type="iammert.com.data.local.entity.RadioEntity" />
 
     </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,34 +24,34 @@
             android:layout_height="@dimen/size_avatar"
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/margin_16dp"
-            app:imageUrl="@{radio.logoSmall}"
-            app:shape="@{Shape.CIRCLE}"/>
+            app:imageUrl="@{radioEntity.logoSmall}"
+            app:shape="@{Shape.CIRCLE}" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:orientation="vertical"
-            android:layout_toRightOf="@+id/imageview_avatar">
+            android:layout_toRightOf="@+id/imageview_avatar"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{radio.radioName}"
-                android:textAppearance="@style/BaseTextAppearance"/>
+                android:text="@{radioEntity.radioName}"
+                android:textAppearance="@style/BaseTextAppearance" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{radio.dial}"
-                android:textAppearance="@style/BaseTextAppearance"/>
+                android:text="@{radioEntity.dial}"
+                android:textAppearance="@style/BaseTextAppearance" />
 
         </LinearLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
 

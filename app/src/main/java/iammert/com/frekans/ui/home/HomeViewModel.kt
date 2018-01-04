@@ -3,13 +3,11 @@ package iammert.com.frekans.ui.home
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import iammert.com.frekans.data.local.entity.GenreEntity
-import iammert.com.frekans.repository.RadioRepository
 import iammert.com.frekans.util.RxAwareViewModel
 import iammert.com.base.extensions.plusAssign
 import iammert.com.data.local.entity.RadioEntity
-import iammert.com.data.local.entity.RecentlyPlayedEntity
+import iammert.com.data.repository.RadioRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import javax.inject.Inject
 
 /**
@@ -36,6 +34,5 @@ class HomeViewModel @Inject constructor(radioRepository: RadioRepository) : RxAw
                 .getRecentlyPlayedRadios()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(recentlyPlayedLiveData::setValue)
-
     }
 }

@@ -3,25 +3,25 @@ package iammert.com.frekans.ui.trending
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import iammert.com.data.remote.model.Radio
+import iammert.com.data.local.entity.RadioEntity
 import iammert.com.frekans.databinding.ItemTrendingBinding
 
 /**
  * Created by mertsimsek on 30/11/2017.
  */
-class TrendingAdapter(private var trendingList: List<Radio> = ArrayList()) : RecyclerView.Adapter<TrendingAdapter.TrendingItemViewHolder>() {
+class TrendingAdapter(private var trendingList: List<RadioEntity> = ArrayList()) : RecyclerView.Adapter<TrendingAdapter.TrendingItemViewHolder>() {
 
     lateinit var itemClickListener: OnItemClickListener
 
     interface OnItemClickListener {
-        fun onItemClicked(radio: Radio)
+        fun onItemClicked(radioEntity: RadioEntity)
     }
 
     fun setOnItemClickListener(itemClickListener: OnItemClickListener) {
         this.itemClickListener = itemClickListener
     }
 
-    fun setTrendingList(trendingList: List<Radio>) {
+    fun setTrendingList(trendingList: List<RadioEntity>) {
         this.trendingList = trendingList
         notifyDataSetChanged()
     }
@@ -40,11 +40,11 @@ class TrendingAdapter(private var trendingList: List<Radio> = ArrayList()) : Rec
                                  private var itemClickListener: OnItemClickListener?) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-            binding.root.setOnClickListener { itemClickListener?.onItemClicked(binding.radio!!) }
+            binding.root.setOnClickListener { itemClickListener?.onItemClicked(binding.radioEntity!!) }
         }
 
-        fun bind(genre: Radio) = with(binding) {
-            binding.radio = genre
+        fun bind(radioEntity: RadioEntity) = with(binding) {
+            binding.radioEntity = radioEntity
             executePendingBindings()
         }
 
