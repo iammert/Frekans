@@ -39,6 +39,7 @@
                     android:layout_height="@dimen/size_bottom_player_avatar"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/margin_24dp"
+                    app:placeHolder="@{@drawable/ic_placeholder_cover_circle}"
                     app:imageUrl="@{playerDataState.radio.logoSmall}"
                     app:shape="@{Shape.CIRCLE}" />
 

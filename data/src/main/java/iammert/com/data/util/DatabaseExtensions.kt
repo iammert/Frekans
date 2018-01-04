@@ -8,5 +8,6 @@ import android.arch.persistence.room.RoomDatabase
 fun RoomDatabase.transaction(func: RoomDatabase.() -> Unit){
     beginTransaction()
     func()
+    setTransactionSuccessful()
     endTransaction()
 }

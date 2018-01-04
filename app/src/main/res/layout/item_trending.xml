@@ -24,6 +24,7 @@
             android:layout_height="@dimen/size_avatar"
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/margin_16dp"
+            app:placeHolder="@{@drawable/ic_placeholder_cover_circle}"
             app:imageUrl="@{radioEntity.logoSmall}"
             app:shape="@{Shape.CIRCLE}" />
 
