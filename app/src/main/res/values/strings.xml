@@ -13,7 +13,7 @@
     <string name="title_homepage_recently_played">Recently played</string>
 
     <!-- Player texts-->
-    <string name="label_stream_buffering">Source 1 loading&#8230;</string>
+    <string name="label_stream_buffering">Source %1$d loading&#8230;</string>
     <string name="label_stream_error">Source error</string>
 
 </resources>
