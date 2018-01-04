@@ -24,9 +24,9 @@ fun View.translateUp(onlyIfNotVisible: Boolean = false, animationListener: Anima
         return
     }
 
-    visibility = View.VISIBLE
     TranslateAnimation(0f, 0f, height.toFloat(), 0f)
             .apply {
+                visibility = View.VISIBLE
                 duration = 200
                 fillAfter = true
                 setAnimationListener(animationListener)
