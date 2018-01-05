@@ -15,10 +15,10 @@ import javax.inject.Inject
  */
 class HomeViewModel @Inject constructor(private val radioRepository: RadioRepository) : RxAwareViewModel() {
 
-    private val genresLiveData = MutableLiveData<List<GenreEntity>>()
+    private val _genresLiveData = MutableLiveData<List<GenreEntity>>()
 
-    val genres: LiveData<List<GenreEntity>>
-        get() = genresLiveData
+    val genresLiveData: LiveData<List<GenreEntity>>
+        get() = _genresLiveData
 
     private val recentlyPlayedLiveData = MutableLiveData<List<RadioEntity>>()
 
@@ -28,7 +28,7 @@ class HomeViewModel @Inject constructor(private val radioRepository: RadioReposi
     init {
         disposables += radioRepository.getGenres()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(genresLiveData::setValue)
+                .subscribe(_genresLiveData::setValue)
 
         disposables += radioRepository
                 .getRecentlyPlayedRadios()

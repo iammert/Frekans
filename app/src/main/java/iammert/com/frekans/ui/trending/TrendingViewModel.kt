@@ -14,14 +14,14 @@ import javax.inject.Inject
  */
 class TrendingViewModel @Inject constructor(private var radioRepository: RadioRepository) : RxAwareViewModel() {
 
-    private val trendingLiveData = MutableLiveData<List<RadioEntity>>()
-    val trendings: LiveData<List<RadioEntity>>
+    private val _trendingLiveData = MutableLiveData<List<RadioEntity>>()
+    val trendingLiveData: LiveData<List<RadioEntity>>
         get() = trendingLiveData
 
     init {
         disposables += radioRepository.getTrendingRadios()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(trendingLiveData::setValue)
+                .subscribe(_trendingLiveData::setValue)
     }
 
     fun addRadioToRecentlyPlayed(radioEntity: RadioEntity) {

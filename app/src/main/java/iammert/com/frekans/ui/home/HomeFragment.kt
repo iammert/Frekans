@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment<HomeViewModel>(), RecentlyPlayedAdapter.OnItem
 
         val genreAdapter = GenresAdapter()
         binding.recyclerviewGenres.adapter = genreAdapter
-        viewModel.genres.reObserve(this, Observer {
+        viewModel.genresLiveData.reObserve(this, Observer {
             it?.let { genreAdapter.setGenres(it) }
         })
 

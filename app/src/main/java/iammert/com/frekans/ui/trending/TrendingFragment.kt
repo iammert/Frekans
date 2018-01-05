@@ -34,7 +34,7 @@ class TrendingFragment : BaseFragment<TrendingViewModel>(), TrendingAdapter.OnIt
         val adapter = TrendingAdapter()
         adapter.setOnItemClickListener(this)
         binding.recyclerView.adapter = adapter
-        viewModel.trendings.reObserve(this, Observer { it?.let { adapter.setTrendingList(it) } })
+        viewModel.trendingLiveData.reObserve(this, Observer { it?.let { adapter.setTrendingList(it) } })
     }
 
     override fun onItemClicked(radioEntity: RadioEntity) {
