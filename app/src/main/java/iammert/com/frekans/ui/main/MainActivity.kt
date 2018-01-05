@@ -70,19 +70,12 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
     private fun updatePlayerState(playerDataState: PlayerDataState?) {
         binding.playerDataState = playerDataState
-
-        //TO-DO second parameter can be move to extension function and take on animation end method as higher order function
-        binding.layoutPlayerBottom.translateUp(true, object : Animation.AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {}
-
-            override fun onAnimationStart(animation: Animation?) {}
-
-            override fun onAnimationEnd(animation: Animation?) {
+        binding.layoutPlayerBottom.translateUp(true, {
+            onAnimationEnd {
                 val params = binding.container.layoutParams as RelativeLayout.LayoutParams
                 params.addRule(RelativeLayout.ABOVE, binding.layoutPlayerBottom.id)
                 binding.container.layoutParams = params
             }
-
         })
     }
 }

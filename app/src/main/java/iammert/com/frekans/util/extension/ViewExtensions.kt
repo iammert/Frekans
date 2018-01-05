@@ -2,8 +2,6 @@ package iammert.com.frekans.util.extension
 
 import android.view.View
 import android.view.ViewTreeObserver
-import android.view.animation.Animation
-import android.view.animation.TranslateAnimation
 
 /**
  * Created by mertsimsek on 03/01/18.
@@ -17,19 +15,4 @@ inline fun <T : View> T.afterMeasured(crossinline f: T.() -> Unit) {
             }
         }
     })
-}
-
-fun View.translateUp(onlyIfNotVisible: Boolean = false, animationListener: Animation.AnimationListener) {
-    if (onlyIfNotVisible && View.VISIBLE == visibility) {
-        return
-    }
-
-    TranslateAnimation(0f, 0f, height.toFloat(), 0f)
-            .apply {
-                visibility = View.VISIBLE
-                duration = 200
-                fillAfter = true
-                setAnimationListener(animationListener)
-                startAnimation(this)
-            }
 }
