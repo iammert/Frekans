@@ -16,7 +16,7 @@ class TrendingViewModel @Inject constructor(private var radioRepository: RadioRe
 
     private val _trendingLiveData = MutableLiveData<List<RadioEntity>>()
     val trendingLiveData: LiveData<List<RadioEntity>>
-        get() = trendingLiveData
+        get() = _trendingLiveData
 
     init {
         disposables += radioRepository.getTrendingRadios()
