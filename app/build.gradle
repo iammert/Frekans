@@ -72,8 +72,8 @@ dependencies {
     implementation "com.facebook.stetho:stetho:${libraries.stetho}"
     implementation "com.android.support:multidex:${libraries.multidex}"
 
-    kapt 'com.google.dagger:dagger-compiler:2.13'
-    kapt 'com.google.dagger:dagger-android-processor:2.13'
-    kapt "android.arch.lifecycle:compiler:1.0.0"
+    kapt "com.google.dagger:dagger-compiler:${libraries.dagger}"
+    kapt "com.google.dagger:dagger-android-processor:${libraries.dagger}"
+    kapt "android.arch.lifecycle:compiler:${libraries.arch}"
     kapt 'com.android.databinding:compiler:3.0.1'
 }

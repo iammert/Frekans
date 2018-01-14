@@ -46,6 +46,6 @@ dependencies {
     api "com.squareup.okhttp3:okhttp:${libraries.okhttp}"
     api "com.squareup.okhttp3:logging-interceptor:${libraries.okhttp}"
 
-    kapt "android.arch.persistence.room:compiler:1.0.0"
-    kapt "com.google.dagger:dagger-compiler:2.13"
+    kapt "android.arch.persistence.room:compiler:${libraries.arch}"
+    kapt "com.google.dagger:dagger-compiler:${libraries.dagger}"
 }
