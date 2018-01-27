@@ -23,5 +23,5 @@ android {
 dependencies{
     api project(":base")
     api "com.google.android.exoplayer:exoplayer:${libraries.exoPlayer}"
-    kapt "com.google.dagger:dagger-compiler:2.13"
+    kapt "com.google.dagger:dagger-compiler:${libraries.dagger}"
 }
