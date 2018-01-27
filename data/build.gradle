@@ -40,6 +40,8 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:${libraries.arch}"
     implementation "android.arch.persistence.room:rxjava2:${libraries.arch}"
 
+    implementation "com.google.firebase:firebase-database:${libraries.firebase}"
+
     api "com.squareup.retrofit2:retrofit:${libraries.retrofit}"
     api "com.squareup.retrofit2:converter-gson:${libraries.retrofit}"
     api "com.squareup.retrofit2:adapter-rxjava2:${libraries.retrofit}"
@@ -49,3 +51,4 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:${libraries.arch}"
     kapt "com.google.dagger:dagger-compiler:${libraries.dagger}"
 }
+

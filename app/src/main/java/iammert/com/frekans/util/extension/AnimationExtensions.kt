@@ -1,53 +1,51 @@
 package iammert.com.frekans.util.extension
 
-import android.animation.Animator
 import android.view.View
-import android.view.ViewPropertyAnimator
+import android.view.animation.Animation
+import android.view.animation.TranslateAnimation
 
 /**
  * Created by mertsimsek on 05/01/2018.
  */
 
-class AnimatorListenerDelegate : Animator.AnimatorListener {
+class AnimationListenerDelegate : Animation.AnimationListener {
 
-    private var _onAnimationRepeat: ((animation: Animator?) -> Unit)? = null
-    private var _onAnimationEnd: ((animation: Animator?) -> Unit)? = null
-    private var _onAnimationStart: ((animation: Animator?) -> Unit)? = null
-    private var _onAnimationCancel: ((animation: Animator?) -> Unit)? = null
+    private var _onAnimationRepeat: ((animation: Animation?) -> Unit)? = null
+    private var _onAnimationEnd: ((animation: Animation?) -> Unit)? = null
+    private var _onAnimationStart: ((animation: Animation?) -> Unit)? = null
 
-    override fun onAnimationRepeat(p0: Animator?) {
+    override fun onAnimationRepeat(p0: Animation?) {
         _onAnimationRepeat?.invoke(p0)
     }
 
-    override fun onAnimationEnd(p0: Animator?) {
+    override fun onAnimationEnd(p0: Animation?) {
         _onAnimationEnd?.invoke(p0)
     }
 
-    override fun onAnimationStart(p0: Animator?) {
+    override fun onAnimationStart(p0: Animation?) {
         _onAnimationStart?.invoke(p0)
     }
 
-    override fun onAnimationCancel(p0: Animator?) {
-        _onAnimationCancel?.invoke(p0)
-    }
-
-    fun onAnimationEnd(animator: (animation: Animator?) -> Unit) {
-        _onAnimationEnd = animator
-    }
-
-    fun onAnimationStart(animator: (animation: Animator?) -> Unit) {
-        _onAnimationStart = animator
+    fun onAnimationEnd(animaton: (animation: Animation?) -> Unit) {
+        _onAnimationEnd = animaton
     }
 }
 
-inline fun ViewPropertyAnimator.setListener(func: AnimatorListenerDelegate.() -> Unit): ViewPropertyAnimator {
-    val listener = AnimatorListenerDelegate()
+inline fun Animation.setAnimationListener(func: AnimationListenerDelegate.() -> Unit): Animation {
+    val listener = AnimationListenerDelegate()
     listener.func()
-    setListener(listener)
+    setAnimationListener(listener)
     return this
 }
 
-fun View.translateUp(onlyIfNotVisible: Boolean = false, func: AnimatorListenerDelegate.() -> Unit) {
+fun View.translateUp(onlyIfNotVisible: Boolean = false, func: AnimationListenerDelegate.() -> Unit) {
     if (onlyIfNotVisible && View.VISIBLE == visibility) return
-    animate().translationY(height.toFloat()).setDuration(200).setListener(func).start()
+    TranslateAnimation(0f, 0f, height.toFloat(), 0f)
+            .apply {
+                visibility = View.VISIBLE
+                duration = 200
+                fillAfter = true
+                setAnimationListener(func)
+                startAnimation(this)
+            }
 }

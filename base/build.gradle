@@ -12,6 +12,7 @@ android {
     }
 }
 
+
 dependencies {
     api "org.jetbrains.kotlin:kotlin-stdlib-jre7:${libraries.kotlin}"
     api "com.google.dagger:dagger:${libraries.dagger}"

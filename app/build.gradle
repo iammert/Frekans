@@ -67,6 +67,7 @@ dependencies {
     implementation "android.arch.lifecycle:runtime:${libraries.archRuntime}"
     implementation "android.arch.lifecycle:extensions:${libraries.arch}"
     implementation "android.arch.lifecycle:reactivestreams:${libraries.arch}"
+    implementation "com.google.firebase:firebase-core:${libraries.firebase}"
     implementation "com.squareup.picasso:picasso:${libraries.picasso}"
     implementation "com.roughike:bottom-bar:${libraries.bottombar}"
     implementation "com.facebook.stetho:stetho:${libraries.stetho}"
@@ -77,3 +78,5 @@ dependencies {
     kapt "android.arch.lifecycle:compiler:${libraries.arch}"
     kapt 'com.android.databinding:compiler:3.0.1'
 }
+
+apply plugin: 'com.google.gms.google-services'
